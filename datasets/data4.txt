@@ -1,0 +1,42 @@
+Letter Frequency Distribution in Standard English Text:
+
+E  - 12.70%
+T  - 9.06%
+A  - 8.17%
+O  - 7.51%
+I  - 6.97%
+N  - 6.75%
+S  - 6.33%
+H  - 6.09%
+R  - 5.99%
+D  - 4.25%
+L  - 4.03%
+C  - 2.78%
+U  - 2.76%
+M  - 2.41%
+W  - 2.36%
+F  - 2.23%
+G  - 2.02%
+Y  - 1.97%
+P  - 1.93%
+B  - 1.29%
+V  - 0.98%
+K  - 0.77%
+J  - 0.15%
+X  - 0.15%
+Q  - 0.10%
+Z  - 0.07%
+
+Common Digraphs (two-letter combinations):
+TH, HE, IN, ER, AN, RE, ON, EN, AT, OU, NT, HA, ES, ST, ET, IO, TO, IS, IT, ND
+
+Common Trigraphs (three-letter combinations):
+THE, AND, ING, ION, ENT, ERE, FOR, HER, HAT, THA, WAS, ARE, ETH, HIS, ING
+
+Most Common English Words:
+the, be, to, of, and, a, in, that, have, it, for, not, on, with, he, as, you, do, at, this
+
+Note: These frequencies form the foundation of frequency analysis attacks.
+A ciphertext that preserves letter frequency is vulnerable to this technique.
+Polyalphabetic ciphers like Vigenere flatten these frequencies, making analysis harder.
+The Kasiski test and Index of Coincidence are used to find the key length first.

@@ -1,0 +1,20 @@
+The history of cryptography dates back thousands of years. Ancient civilizations used simple
+substitution ciphers to protect sensitive messages. The Caesar cipher, one of the earliest known
+encryption techniques, was used by Julius Caesar to communicate with his generals. Each letter
+in the plaintext was shifted by a fixed number of positions in the alphabet.
+
+For example, with a shift of three, the letter A becomes D, B becomes E, and so on. The
+recipient, knowing the shift value, could reverse the process to read the original message.
+While revolutionary for its time, this cipher is trivially broken today using frequency analysis
+or simply by trying all twenty-six possible shifts.
+
+Cryptography evolved significantly during the Renaissance with the invention of polyalphabetic
+ciphers such as the Vigenere cipher. These schemes used a keyword to apply different shifts to
+different letters, making frequency analysis far more difficult. For centuries the Vigenere
+cipher was considered unbreakable, earning it the nickname le chiffre indechiffrable.
+
+The twentieth century brought mechanical encryption machines like the Enigma, used by Nazi
+Germany during World War II. Allied codebreakers at Bletchley Park, including Alan Turing,
+broke the Enigma cipher, a feat that is widely believed to have shortened the war by several
+years. Modern cryptography now relies on complex mathematical problems that even the most
+powerful computers cannot solve in a reasonable amount of time.

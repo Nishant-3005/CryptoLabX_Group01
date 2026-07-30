@@ -1,0 +1,24 @@
+In the shadow of silicon valleys and data centers that hum like living things, two analysts
+sat hunched over glowing terminals. The encrypted intercept had arrived at 03:17 hours, tagged
+PRIORITY ALPHA. Neither of them had slept.
+
+"The key length is six," said Meera, pushing her glasses up. "Index of Coincidence confirms it."
+Rajan nodded, fingers already dancing across the keyboard. "Then we run the Kasiski test to
+verify. If it checks out, we split the ciphertext into six streams and attack each with standard
+frequency analysis."
+
+The room smelled of cold coffee and dry-erase markers. Outside, the city slept, unaware that
+the message sitting in their queue could change the course of three ongoing investigations.
+
+"E, T, A," Meera muttered, eyes fixed on the frequency histogram on her screen. "The most
+common ciphertext letter in stream one is X. If X maps to E, our shift for that stream is
+twenty-three." She paused. "Or negative three. Same thing mod twenty-six."
+
+Rajan smiled. This was the part he loved. Not the math — the math was easy once you knew it.
+It was the moment of revelation. When gibberish became language. When noise became signal.
+When a message written for no eyes but one pair became readable to anyone with the right key.
+
+"Got it," he said quietly. The plaintext bloomed across his screen, word by careful word.
+"It reads: The package moves at midnight. Dock seven. Come alone."
+
+They looked at each other. The work was only beginning.
