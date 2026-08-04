@@ -8,12 +8,6 @@ __pycache__/
 *.pyo
 *.pyd
 
-# ── Virtual environments ─────────────────────────────────────────────────────
-# If you create a venv inside the project folder, exclude it
-venv/
-.venv/
-env/
-.env/
 
 # ── CryptoLabX log files ─────────────────────────────────────────────────────
 # Logs are generated at runtime and are machine/session-specific
@@ -29,12 +23,6 @@ desktop.ini        # Windows folder settings
 .idea/
 *.sublime-project
 *.sublime-workspace
-
-# ── Sensitive / secret files ─────────────────────────────────────────────────
-# NEVER commit API keys, passwords, or secret keys
-.env
-secrets.py
-config_secret.py
 
 # ── Compiled C extensions ────────────────────────────────────────────────────
 *.so
