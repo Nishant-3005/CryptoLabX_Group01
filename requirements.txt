@@ -5,10 +5,3 @@
 # --- Week 1 (current) ---
 # No third-party packages needed; uses only Python standard library:
 #   os, glob, collections, datetime, string
-
-# --- Future labs (planned) ---
-# numpy>=1.26.0          # matrix operations for modern cipher implementations
-# sympy>=1.12            # number theory (prime tests, modular arithmetic)
-# pycryptodome>=3.20.0   # reference AES/RSA implementations for verification
-# matplotlib>=3.8.0      # frequency analysis plots
-# rich>=13.0.0           # enhanced terminal output (optional upgrade to ANSI)
