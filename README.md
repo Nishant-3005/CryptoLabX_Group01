@@ -214,21 +214,6 @@ python main.py
 | Package | Purpose | Status |
 |---------|---------|--------|
 | `os`, `glob`, `collections`, `datetime` | Core stdlib used in Lab 1 | ✅ In use |
-| `numpy` ≥ 1.26.0 | Matrix operations for modern ciphers | 🔜 Planned |
-| `sympy` ≥ 1.12 | Number theory, modular arithmetic | 🔜 Planned |
-| `pycryptodome` ≥ 3.20.0 | Reference AES/RSA implementations | 🔜 Planned |
-| `matplotlib` ≥ 3.8.0 | Frequency analysis plots | 🔜 Planned |
-
----
-
-## 🔭 Upcoming (Future Labs)
-
-- [ ] **Caesar Cipher** — Encrypt / Decrypt / Brute-force attack
-- [ ] **Vigenère Cipher** — Polyalphabetic encryption & Kasiski attack
-- [ ] **Rail Fence & Columnar Transposition** ciphers
-- [ ] **Frequency Analysis** — Visual plots using matplotlib
-- [ ] **Modular Arithmetic Utilities** — GCD, extended Euclidean, modular inverse
-- [ ] **AES / RSA** — Modern cipher reference via pycryptodome
 
 ---
 
@@ -237,8 +222,6 @@ python main.py
 | Lab | Tasks Completed | Status |
 |-----|----------------|--------|
 | Lab 1 | Project init, datasets, CLI menu, file analysis, logger | ✅ Done |
-| Lab 2 | Caesar & Vigenère cipher implementation | 🔜 Upcoming |
-| Lab 3 | Cryptanalysis / attack modules | 🔜 Upcoming |
 
 ---
 
