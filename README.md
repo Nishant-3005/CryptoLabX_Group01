@@ -18,8 +18,6 @@
 
 **CryptoLabX** is a Python-based command-line toolkit developed as part of the Cryptography Laboratory course (22CPP307). The project builds a structured, extensible foundation for exploring classical and modern cryptographic algorithms throughout the semester.
 
-**Lab Assignment 1** focuses on establishing the core project infrastructure — a modular Python codebase with a menu-driven CLI interface, automated file analysis, and persistent session logging — before actual cipher implementations begin in upcoming labs.
-
 ---
 
 ## ✅ What Was Done in Lab 1
@@ -157,6 +155,10 @@ flowchart TD
 | **Extensibility** | Placeholder stubs for Encrypt / Decrypt / Attack modules |
 | **Traceability** | Every user action is timestamped and persisted in a log file |
 | **Educational** | Demonstrates CLI design, modularity, logging, and file I/O in Python |
+
+---
+
+## ✅ Lab2 Work (upcoming)
 
 ---
 
