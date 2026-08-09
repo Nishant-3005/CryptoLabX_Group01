@@ -1,0 +1,170 @@
+    1  clear
+    2  sudo apt update
+    3  clear
+    4  sudo apt install tree
+    5  clear
+    6  pwd
+    7  ls -a
+    8  tree
+    9  mkdir OsLab
+   10  cd OsLab
+   11  cat lab1.txt
+   12  touch lab1.txt
+   13  cat lab1.txt
+   14  echo "Hello OS Lab" > lab1.txt
+   15  cat lab1.txt
+   16  ls -l
+   17  clear
+   18  cd 
+   19  clear
+   20  pwd
+   21  ls
+   22  tree
+   23  cat lab1.txt
+   24  cd OsLab
+   25  cat lab1.txt
+   26  clear
+   27  pwd
+   28  ls
+   29  ls clear
+   30  cd
+   31  clear
+   32  pwd
+   33  ls
+   34  ls -l
+   35  mkdir DemoDir
+   36  tree
+   37  cd DemoDir
+   38  pwd
+   39  cd ..
+   40  rmdir DemoDir
+   41  touch file.txt
+   42  touch file2.txt
+   43  echo "Hello OS Lab" > file1.txt
+   44  echo "Hello Linux" > file2.txt
+   45  cat file1.txt
+   46  cp file1.txt copy.txt
+   47  mv copy.txt moved.txt
+   48  ls
+   49  chmod 755 moved.txt
+   50  ls -l
+   51  ln -s file1.txt link.txt
+   52  ls -l
+   53  grep "Hello" file1.txt
+   54  find . -name "*.txt"
+   55  head file1.txt
+   56  tail file2.txt
+   57  cmp file1.txt file2.txt
+   58  diff file1.txt file2.txt
+   59  less file1.txt
+   60  more file1.txt
+   61  dd if=file1.txt of=backup.txt
+   62  locate file1.txt
+   63  sudo apt install locate
+   64  locate file1.txt
+   65  sudo updatedb
+   66  ps
+   67  touch process.txt
+   68  top
+   69  sleep 1000 &
+   70  ps
+   71  kill %1
+   72  ps
+   73  nice -n 10 sleep 30 &
+   74  ps
+   75  if config
+   76  ifconfig
+   77  sudo apt install net-tools
+   78  ifconfig
+   79  ping -c 4 google.com
+   80  curl https://example.com
+   81  wget https://example.com
+   82  nslookup google.com
+   83  netstat -tuln
+   84  traceroute google.com
+   85  sudo apt install traceroute
+   86  traceroute google.com
+   87  traceroute example.com
+   88  tcpdump --version
+   89  whoami
+   90  whereis ls
+   91  uname -a
+   92  sudo apt update
+   93  sudo apt upgrade
+   94  du
+   95  du -sh .
+   96  df -h
+   97  sudo fdisk -l
+   98  cd /proc
+   99  ls
+  100  cat cpuinfo
+  101  cd 
+  102  touch p1.c
+  103  echo #include <stdio.h>
+  104  #include <stdlib.h>
+  105  #include <unistd.h>
+  106  int
+  107  main(int argc, char *argv[])
+  108  {     printf("hello world (pid:%d)\n", (int) getpid());
+  109  sudo -v
+  110  sudo apt install gcc
+  111  cd ostep-code/cpu-api
+  112  gcc p1.c -o p1
+  113  ./p1
+  114  gcc p2.c -o p2
+  115  ./p2
+  116  gcc p3.c -o p3
+  117  ./p3
+  118  gcc p4.c -o p4
+  119  ./p4
+  120  cat p4.c
+  121  clear]
+  122  cd
+  123  clear
+  124  ls
+  125  clear
+  126  who
+  127  pwd
+  128  ls
+  129  ls -a
+  130  ls -l
+  131  psswd
+  132  passwd
+  133  clear
+  134  uname
+  135  uname -a
+  136  apt search python
+  137  apt show python
+  138  clear
+  139  sudo apt update
+  140  sudo -u LENOVO
+  141  sudo -u Lenovo
+  142  clear
+  143  pwd
+  144  ls
+  145  ls -a
+  146  tree
+  147  apt install tree
+  148  clear
+  149  sudo apt install tree
+  150  apt install tree
+  151  sudo -l
+  152  su - lenovo
+  153  git clone https://github.com/remzi-arpacidusseau/ostep-code.git
+  154  cd ostep-code
+  155  ls
+  156  cd cpu-api
+  157  ls
+  158  gcc p1.c -o p1
+  159  apt install gcc
+  160  sudo apt install gcc
+  161  cd 
+  162  sudo apt install gcc
+  163  su - lenovo
+  164  clear
+  165  cat /etc/os-release
+  166  mkdir -p ~/CryptographyLab/Lab2_Bandit
+  167  cd ~/CryptographyLab/Lab2_Bandit
+  168  script sast_lab_log.txt
+  169  cat sast_lab_log.txt
+  170  history > command_history.txt

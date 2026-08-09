@@ -1,0 +1,366 @@
+Script started on 2026-08-06 06:21:00+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="76" LINES="41"]
+[?2004h]0;lokesh@LAPTOP-0TAIK340: ~/CryptographyLab/Lab2_Bandit[01;32mlokesh@LAPTOP-0TAIK340[00m:[01;34m~/CryptographyLab/Lab2_Bandit[00m$ sudo apt uo[Kpdate
+[?2004l[sudo] password for lokesh: 
+[33m0% [Working][0m            Get:1 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+[33m0% [Waiting for headers] [1 InRelease 9773 B/126 kB 8%][0m                                                       Hit:2 http://archive.ubuntu.com/ubuntu noble InRelease
+[33m                                                       0% [1 InRelease 31.5 kB/126 kB 25%][0m[33m0% [Waiting for headers] [1 InRelease 56.1 kB/126 kB 44%][0m                                                         Get:3 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+[33m0% [3 InRelease 14.1 kB/126 kB 11%] [1 InRelease 69.1 kB/126 kB 55%][0m[33m                                                                    0% [3 InRelease 14.1 kB/126 kB 11%][0m[33m0% [3 InRelease 27.1 kB/126 kB 22%][0m                                   Get:4 http://security.ubuntu.com/ubuntu noble-security/main amd64 Packages [925 kB]
+[33m0% [3 InRelease 30.0 kB/126 kB 24%] [4 Packages 3613 B/925 kB 0%][0m[33m                                                                 0% [3 InRelease 35.8 kB/126 kB 28%][0m[33m0% [4 Packages store 0 B] [3 InRelease 35.8 kB/126 kB 28%] [Waiting for hea[0m                                                                           Get:5 http://security.ubuntu.com/ubuntu noble-security/main Translation-en [201 kB]
+[33m0% [4 Packages store 0 B] [3 InRelease 38.7 kB/126 kB 31%] [5 Translation-e[0m[33m0% [4 Packages store 0 B] [3 InRelease 38.7 kB/126 kB 31%] [Waiting for hea[0m                                                                           Get:6 http://security.ubuntu.com/ubuntu noble-security/main amd64 Components [46.3 kB]
+[33m0% [4 Packages store 0 B] [3 InRelease 38.7 kB/126 kB 31%] [6 Components-am[0m[33m0% [4 Packages store 0 B] [3 InRelease 38.7 kB/126 kB 31%] [Waiting for hea[0m                                                                           Get:7 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1199 kB]
+[33m0% [4 Packages store 0 B] [3 InRelease 41.6 kB/126 kB 33%] [7 Packages 31.2[0m[33m0% [4 Packages store 0 B] [3 InRelease 41.6 kB/126 kB 33%] [Waiting for hea[0m                                                                           Get:8 http://security.ubuntu.com/ubuntu noble-security/universe Translation-en [239 kB]
+[33m0% [4 Packages store 0 B] [3 InRelease 41.6 kB/126 kB 33%] [8 Translation-e[0m[33m0% [4 Packages store 0 B] [3 InRelease 44.5 kB/126 kB 35%] [Waiting for hea[0m                                                                           Get:9 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Components [76.2 kB]
+[33m0% [4 Packages store 0 B] [3 InRelease 44.5 kB/126 kB 35%] [9 Components-am[0m[33m0% [4 Packages store 0 B] [3 InRelease 44.5 kB/126 kB 35%] [Waiting for hea[0m                                                                           Get:10 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [1316 kB]
+[33m0% [4 Packages store 0 B] [3 InRelease 44.5 kB/126 kB 35%] [10 Packages 43.[0m[33m0% [4 Packages store 0 B] [3 InRelease 47.4 kB/126 kB 38%] [Waiting for hea[0m                                                                           Get:11 http://security.ubuntu.com/ubuntu noble-security/restricted Translation-en [301 kB]
+[33m0% [4 Packages store 0 B] [3 InRelease 47.4 kB/126 kB 38%] [11 Translation-[0m[33m                                                                           0% [4 Packages store 0 B] [3 InRelease 47.4 kB/126 kB 38%][0m[33m                                                          0% [3 InRelease 47.4 kB/126 kB 38%][0m[33m0% [5 Translation-en store 0 B] [3 InRelease 47.4 kB/126 kB 38%][0m[33m                                                                0% [3 InRelease 56.1 kB/126 kB 44%][0m[33m0% [6 Components-amd64 store 0 B] [3 InRelease 56.1 kB/126 kB 44%][0m[33m                                                                  0% [3 InRelease 59.0 kB/126 kB 47%][0m[33m0% [7 Packages store 0 B] [3 InRelease 59.0 kB/126 kB 47%][0m[33m                                                          0% [3 InRelease 99.5 kB/126 kB 79%][0m[33m0% [8 Translation-en store 0 B] [3 InRelease 99.5 kB/126 kB 79%][0m[33m                                                                0% [3 InRelease 111 kB/126 kB 88%][0m[33m0% [9 Components-amd64 store 0 B] [3 InRelease 111 kB/126 kB 88%][0m[33m                                                                 0% [3 InRelease 120 kB/126 kB 95%][0m[33m0% [10 Packages store 0 B] [3 InRelease 120 kB/126 kB 95%][0m[33m                                                          0% [10 Packages store 0 B][0m[33m0% [10 Packages store 0 B] [Waiting for headers][0m[33m                                                0% [Waiting for headers][0m[33m0% [11 Translation-en store 0 B] [Waiting for headers][0m[33m                                                      0% [Waiting for headers][0m                        Get:12 http://archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+[33m0% [12 InRelease 2533 B/126 kB 2%][0m[33m                                  0% [Working][0m            Get:13 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1183 kB]
+[33m0% [13 Packages 22.5 kB/1183 kB 2%][0m[33m                                   0% [Waiting for headers][0m                        Get:14 http://archive.ubuntu.com/ubuntu noble-updates/main Translation-en [281 kB]
+[33m0% [13 Packages store 0 B] [14 Translation-en 43.7 kB/281 kB 16%][0m[33m                                                                 0% [13 Packages store 0 B] [Waiting for headers][0m                                                Get:15 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [180 kB]
+[33m0% [13 Packages store 0 B] [15 Components-amd64 57.3 kB/180 kB 32%][0m[33m                                                                   0% [13 Packages store 0 B] [Waiting for headers][0m                                                Get:16 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [387 kB]
+[33m0% [13 Packages store 0 B] [16 Components-amd64 43.4 kB/387 kB 11%][0m[33m                                                                   0% [13 Packages store 0 B] [Waiting for headers][0m                                                Get:17 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [1414 kB]
+[33m0% [13 Packages store 0 B] [17 Packages 48.6 kB/1414 kB 3%][0m                                                           Get:18 http://archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [320 kB]
+[33m0% [13 Packages store 0 B] [18 Translation-en 75.9 kB/320 kB 24%][0m[33m                                                                 0% [13 Packages store 0 B] [Waiting for headers][0m                                                Get:19 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+[33m                                                0% [13 Packages store 0 B][0m[33m98% [13 Packages store 0 B][0m                           Get:20 http://archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [5780 B]
+[33m98% [13 Packages store 0 B] [20 Components-amd64 5780 B/5780 B 100%][0m[33m                                                                    98% [13 Packages store 0 B][0m                           Get:21 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [12.6 kB]
+[33m98% [13 Packages store 0 B] [21 Components-amd64 12.6 kB/12.6 kB 100%][0m[33m                                                                      98% [13 Packages store 0 B][0m[33m                           99% [Working][0m[33m99% [14 Translation-en store 0 B][0m[33m                                 99% [Working][0m[33m99% [15 Components-amd64 store 0 B][0m[33m                                   99% [Working][0m[33m99% [16 Components-amd64 store 0 B][0m[33m                                   99% [Working][0m[33m99% [17 Packages store 0 B][0m[33m                           99% [Working][0m[33m99% [18 Translation-en store 0 B][0m[33m                                 99% [Working][0m[33m99% [19 Components-amd64 store 0 B][0m[33m                                   100% [Working][0m[33m100% [20 Components-amd64 store 0 B][0m[33m                                    100% [Working][0m[33m100% [21 Components-amd64 store 0 B][0m[33m                                    100% [Working][0m              Fetched 8468 kB in 3s (3143 kB/s)
+Reading package lists... 0%Reading package lists... 0%Reading package lists... 0%Reading package lists... 3%Reading package lists... 3%Reading package lists... 5%Reading package lists... 5%Reading package lists... 37%Reading package lists... 43%Reading package lists... 43%Reading package lists... 60%Reading package lists... 60%Reading package lists... 61%Reading package lists... 61%Reading package lists... 61%Reading package lists... 61%Reading package lists... 61%Reading package lists... 61%Reading package lists... 62%Reading package lists... 62%Reading package lists... 65%Reading package lists... 65%Reading package lists... 67%Reading package lists... 67%Reading package lists... 72%Reading package lists... 72%Reading package lists... 74%Reading package lists... 74%Reading package lists... 79%Reading package lists... 79%Reading package lists... 82%Reading package lists... 82%Reading package lists... 82%Reading package lists... 82%Reading package lists... 82%Reading package lists... 82%Reading package lists... 82%Reading package lists... 82%Reading package lists... 82%Reading package lists... 82%Reading package lists... 82%Reading package lists... 82%Reading package lists... 82%Reading package lists... 82%Reading package lists... 82%Reading package lists... 82%Reading package lists... 82%Reading package lists... 82%Reading package lists... 85%Reading package lists... 85%Reading package lists... 87%Reading package lists... 87%Reading package lists... 90%Reading package lists... 90%Reading package lists... 92%Reading package lists... 92%Reading package lists... 96%Reading package lists... 96%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+All packages are up to date.
+[?2004h]0;lokesh@LAPTOP-0TAIK340: ~/CryptographyLab/Lab2_Bandit[01;32mlokesh@LAPTOP-0TAIK340[00m:[01;34m~/CryptographyLab/Lab2_Bandit[00m$ sudo p[Kap[K[K[K apt install -y py thon3-[K[K[K[K[K[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K [K install na[K[Kbam[Kndi t
+[?2004lReading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+The following additional packages will be installed:
+  python3-bandit python3-git python3-gitdb python3-importlib-metadata
+  python3-more-itertools python3-pbr python3-smmap python3-stevedore
+  python3-zipp
+Suggested packages:
+  python-git-doc
+The following NEW packages will be installed:
+  bandit python3-bandit python3-git python3-gitdb
+  python3-importlib-metadata python3-more-itertools python3-pbr
+  python3-smmap python3-stevedore python3-zipp
+0 upgraded, 10 newly installed, 0 to remove and 0 not upgraded.
+Need to get 441 kB of archives.
+After this operation, 2306 kB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+[33m0% [Working][0m            Get:1 http://archive.ubuntu.com/ubuntu noble/universe amd64 python3-smmap all 6.0.0-1 [20.5 kB]
+[33m4% [1 python3-smmap 20.5 kB/20.5 kB 100%][0m[33m                                         6% [Working][0m            Get:2 http://archive.ubuntu.com/ubuntu noble/universe amd64 python3-gitdb all 4.0.11-1 [46.2 kB]
+[33m10% [2 python3-gitdb 26.0 kB/46.2 kB 56%][0m[33m                                         16% [Waiting for headers][0m                         Get:3 http://archive.ubuntu.com/ubuntu noble/universe amd64 python3-git all 3.1.37-3 [138 kB]
+[33m23% [3 python3-git 37.6 kB/138 kB 27%][0m[33m                                      43% [Waiting for headers][0m                         Get:4 http://archive.ubuntu.com/ubuntu noble/main amd64 python3-more-itertools all 10.2.0-1 [52.9 kB]
+[33m53% [4 python3-more-itertools 52.9 kB/52.9 kB 100%][0m[33m                                                   55% [Waiting for headers][0m                         Get:5 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3-zipp all 1.0.0-6ubuntu0.1 [6774 B]
+[33m56% [5 python3-zipp 6774 B/6774 B 100%][0m[33m                                       58% [Waiting for headers][0m                         Get:6 http://archive.ubuntu.com/ubuntu noble/main amd64 python3-importlib-metadata all 4.12.0-1 [17.8 kB]
+[33m61% [6 python3-importlib-metadata 17.8 kB/17.8 kB 100%][0m[33m                                                       63% [Waiting for headers][0m                         Get:7 http://archive.ubuntu.com/ubuntu noble/main amd64 python3-pbr all 5.11.1-0ubuntu1 [66.5 kB]
+[33m69% [7 python3-pbr 32.8 kB/66.5 kB 49%][0m[33m                                       77% [Waiting for headers][0m                         Get:8 http://archive.ubuntu.com/ubuntu noble/main amd64 python3-stevedore all 1:5.1.0-0ubuntu1 [21.0 kB]
+[33m81% [8 python3-stevedore 21.0 kB/21.0 kB 100%][0m[33m                                              83% [Waiting for headers][0m                         Get:9 http://archive.ubuntu.com/ubuntu noble/universe amd64 python3-bandit all 1.6.2-3 [66.6 kB]
+[33m94% [9 python3-bandit 57.3 kB/66.6 kB 86%][0m[33m                                          97% [Waiting for headers][0m                         Get:10 http://archive.ubuntu.com/ubuntu noble/universe amd64 bandit all 1.6.2-3 [4350 B]
+[33m98% [10 bandit 4350 B/4350 B 100%][0m[33m                                  100% [Working][0m              Fetched 441 kB in 0s (3657 kB/s)
+
+7[0;40r8[1ASelecting previously unselected package python3-smmap.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 45962 files and directories currently installed.)
+Preparing to unpack .../0-python3-smmap_6.0.0-1_all.deb ...
+7[41;0f[42m[30mProgress: [  0%][49m[39m [......................................................] 87[41;0f[42m[30mProgress: [  2%][49m[39m [#.....................................................] 8Unpacking python3-smmap (6.0.0-1) ...
+7[41;0f[42m[30mProgress: [  5%][49m[39m [##....................................................] 8Selecting previously unselected package python3-gitdb.
+Preparing to unpack .../1-python3-gitdb_4.0.11-1_all.deb ...
+7[41;0f[42m[30mProgress: [  7%][49m[39m [###...................................................] 8Unpacking python3-gitdb (4.0.11-1) ...
+7[41;0f[42m[30mProgress: [ 10%][49m[39m [#####.................................................] 8Selecting previously unselected package python3-git.
+Preparing to unpack .../2-python3-git_3.1.37-3_all.deb ...
+7[41;0f[42m[30mProgress: [ 12%][49m[39m [######................................................] 8Unpacking python3-git (3.1.37-3) ...
+7[41;0f[42m[30mProgress: [ 15%][49m[39m [#######...............................................] 8Selecting previously unselected package python3-more-itertools.
+Preparing to unpack .../3-python3-more-itertools_10.2.0-1_all.deb ...
+7[41;0f[42m[30mProgress: [ 17%][49m[39m [#########.............................................] 8Unpacking python3-more-itertools (10.2.0-1) ...
+7[41;0f[42m[30mProgress: [ 20%][49m[39m [##########............................................] 8Selecting previously unselected package python3-zipp.
+Preparing to unpack .../4-python3-zipp_1.0.0-6ubuntu0.1_all.deb ...
+7[41;0f[42m[30mProgress: [ 22%][49m[39m [###########...........................................] 8Unpacking python3-zipp (1.0.0-6ubuntu0.1) ...
+7[41;0f[42m[30mProgress: [ 24%][49m[39m [#############.........................................] 8Selecting previously unselected package python3-importlib-metadata.
+Preparing to unpack .../5-python3-importlib-metadata_4.12.0-1_all.deb ...
+7[41;0f[42m[30mProgress: [ 27%][49m[39m [##############........................................] 8Unpacking python3-importlib-metadata (4.12.0-1) ...
+7[41;0f[42m[30mProgress: [ 29%][49m[39m [###############.......................................] 8Selecting previously unselected package python3-pbr.
+Preparing to unpack .../6-python3-pbr_5.11.1-0ubuntu1_all.deb ...
+7[41;0f[42m[30mProgress: [ 32%][49m[39m [#################.....................................] 8Unpacking python3-pbr (5.11.1-0ubuntu1) ...
+7[41;0f[42m[30mProgress: [ 34%][49m[39m [##################....................................] 8Selecting previously unselected package python3-stevedore.
+Preparing to unpack .../7-python3-stevedore_1%3a5.1.0-0ubuntu1_all.deb ...
+7[41;0f[42m[30mProgress: [ 37%][49m[39m [###################...................................] 8Unpacking python3-stevedore (1:5.1.0-0ubuntu1) ...
+7[41;0f[42m[30mProgress: [ 39%][49m[39m [#####################.................................] 8Selecting previously unselected package python3-bandit.
+Preparing to unpack .../8-python3-bandit_1.6.2-3_all.deb ...
+7[41;0f[42m[30mProgress: [ 41%][49m[39m [######################................................] 8Unpacking python3-bandit (1.6.2-3) ...
+7[41;0f[42m[30mProgress: [ 44%][49m[39m [#######################...............................] 8Selecting previously unselected package bandit.
+Preparing to unpack .../9-bandit_1.6.2-3_all.deb ...
+7[41;0f[42m[30mProgress: [ 46%][49m[39m [#########################.............................] 8Unpacking bandit (1.6.2-3) ...
+7[41;0f[42m[30mProgress: [ 49%][49m[39m [##########################............................] 8Setting up python3-more-itertools (10.2.0-1) ...
+7[41;0f[42m[30mProgress: [ 51%][49m[39m [###########################...........................] 87[41;0f[42m[30mProgress: [ 54%][49m[39m [############################..........................] 8Setting up python3-pbr (5.11.1-0ubuntu1) ...
+7[41;0f[42m[30mProgress: [ 56%][49m[39m [##############################........................] 87[41;0f[42m[30mProgress: [ 59%][49m[39m [###############################.......................] 8Setting up python3-zipp (1.0.0-6ubuntu0.1) ...
+7[41;0f[42m[30mProgress: [ 61%][49m[39m [################################......................] 87[41;0f[42m[30mProgress: [ 63%][49m[39m [##################################....................] 8Setting up python3-smmap (6.0.0-1) ...
+7[41;0f[42m[30mProgress: [ 66%][49m[39m [###################################...................] 87[41;0f[42m[30mProgress: [ 68%][49m[39m [####################################..................] 8Setting up python3-importlib-metadata (4.12.0-1) ...
+7[41;0f[42m[30mProgress: [ 71%][49m[39m [######################################................] 87[41;0f[42m[30mProgress: [ 73%][49m[39m [#######################################...............] 8Setting up python3-gitdb (4.0.11-1) ...
+7[41;0f[42m[30mProgress: [ 76%][49m[39m [########################################..............] 87[41;0f[42m[30mProgress: [ 78%][49m[39m [##########################################............] 8Setting up python3-git (3.1.37-3) ...
+7[41;0f[42m[30mProgress: [ 80%][49m[39m [###########################################...........] 87[41;0f[42m[30mProgress: [ 83%][49m[39m [############################################..........] 8Setting up python3-stevedore (1:5.1.0-0ubuntu1) ...
+7[41;0f[42m[30mProgress: [ 85%][49m[39m [##############################################........] 87[41;0f[42m[30mProgress: [ 88%][49m[39m [###############################################.......] 8Setting up python3-bandit (1.6.2-3) ...
+7[41;0f[42m[30mProgress: [ 90%][49m[39m [################################################......] 87[41;0f[42m[30mProgress: [ 93%][49m[39m [##################################################....] 8Setting up bandit (1.6.2-3) ...
+7[41;0f[42m[30mProgress: [ 95%][49m[39m [###################################################...] 87[41;0f[42m[30mProgress: [ 98%][49m[39m [####################################################..] 8Processing triggers for man-db (2.12.0-4build2) ...
+
+7[0;41r8[1A[J[?2004h]0;lokesh@LAPTOP-0TAIK340: ~/CryptographyLab/Lab2_Bandit[01;32mlokesh@LAPTOP-0TAIK340[00m:[01;34m~/CryptographyLab/Lab2_Bandit[00m$ bandit --version
+[?2004lbandit 1.6.2
+  python version = 3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]
+[?2004h]0;lokesh@LAPTOP-0TAIK340: ~/CryptographyLab/Lab2_Bandit[01;32mlokesh@LAPTOP-0TAIK340[00m:[01;34m~/CryptographyLab/Lab2_Bandit[00m$ python3 --version
+[?2004lPython 3.12.3
+[?2004h]0;lokesh@LAPTOP-0TAIK340: ~/CryptographyLab/Lab2_Bandit[01;32mlokesh@LAPTOP-0TAIK340[00m:[01;34m~/CryptographyLab/Lab2_Bandit[00m$ nanao[K[Ko insecure.py
+[?2004l[?2004h[?1049h[22;0;0t[1;41r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[39;33H(B[0;7m[ New File ](B[m[H(B[0;7m  GNU nano 7.2                     insecure.py                              [1;75H(B[m[40d(B[0;7m^G(B[m Help[40;16H(B[0;7m^O(B[m Write Out   (B[0;7m^W(B[m Where Is    (B[0;7m^K(B[m Cut[40;61H(B[0;7m^T(B[m Execute[41d(B[0;7m^X(B[m Exit[41;16H(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste[61G(B[0;7m^J(B[m Justify[2d[?12l[?25h[?25l[39d[K[1;48H(B[0;7m*[75G(B[m[2d(B[0;1m[36mimport[39m(B[m subprocess[3d(B[0;1m[36mimport[39m(B[m hashlib[4d(B[0;1m[36mimport[39m(B[m pickle[5d(B[0;1m[36mimport[39m(B[m random[6d(B[0;1m[36mimport[39m(B[m os[8dpassword = (B[0;1m[32m"admin123"[10d[39m(B[mcommand = input((B[0;1m[32m"Enter command: "[39m(B[m)[11dsubprocess.call(command, shell=(B[0;1m[35mTrue[39m(B[m)[13dprint(hashlib.md5(b(B[0;1m[32m"hello"[39m(B[m).hexdigest())[15ddata = input((B[0;1m[32m"Enter serialized object: "[39m(B[m)[16dpickle.loads(data.encode())[18dprint(random.random())[20dos.system((B[0;1m[32m"ls"[39m(B[m)[?12l[?25h[?25l[40;16H    (B[0;7mM-D(B[m DOS Format     (B[0;7mM-A(B[m Append   [58G(B[0;7mM-B(B[m Backup File[41;2H(B[0;7mC(B[m Cancel[16G    (B[0;7mM-M(B[m Mac Format     (B[0;7mM-P(B[m Prepend        (B[0;7m^T(B[m Browse[K[39d(B[0;7mFile Name to Write: insecure.py                                             [39;32H(B[m[?12l[?25h[?25l[1K (B[0;7m[ Writing... ](B[m[K[1;48H(B[0;7m [75G(B[m[39;30H(B[0;7m[ Wrote 19 lines ](B[m[40;16H(B[0;7m^O(B[m Write Out   (B[0;7m^W(B[m Where Is    (B[0;7m^K(B[m Cut[58G   (B[0;7m^T(B[m Execute[K[41;2H(B[0;7mX(B[m Exit  [16G(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste       (B[0;7m^J(B[m Justify[?12l[?25h[20;16H[?25l[39d[J[41d[?12l[?25h[41;1H[?1049l[23;0;0t[?1l>[?2004l[?2004h]0;lokesh@LAPTOP-0TAIK340: ~/CryptographyLab/Lab2_Bandit[01;32mlokesh@LAPTOP-0TAIK340[00m:[01;34m~/CryptographyLab/Lab2_Bandit[00m$ cat insecure.py
+[?2004limport subprocess
+import hashlib
+import pickle
+import random
+import os
+
+password = "admin123"
+
+command = input("Enter command: ")
+subprocess.call(command, shell=True)
+
+print(hashlib.md5(b"hello").hexdigest())
+
+data = input("Enter serialized object: ")
+pickle.loads(data.encode())
+
+print(random.random())
+
+os.system("ls")
+[?2004h]0;lokesh@LAPTOP-0TAIK340: ~/CryptographyLab/Lab2_Bandit[01;32mlokesh@LAPTOP-0TAIK340[00m:[01;34m~/CryptographyLab/Lab2_Bandit[00m$ bandit ince[K[Ksecure.py
+[?2004l[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[main]	INFO	running on Python 3.12.3
+[node_visitor]	INFO	Unable to find qualified name for module: insecure.py
+[95mRun started:2026-08-06 06:28:48.621858[0m
+[95m
+Test results:[0m
+[94m>> Issue: [B404:blacklist] Consider possible security implications associated with subprocess module.
+   Severity: Low   Confidence: High
+   Location: insecure.py:1
+   More Info: https://bandit.readthedocs.io/en/latest/blacklists/blacklist_imports.html#b404-import-subprocess[0m
+1	import subprocess
+2	import hashlib
+3	import pickle
+
+--------------------------------------------------
+[94m>> Issue: [B403:blacklist] Consider possible security implications associated with pickle module.
+   Severity: Low   Confidence: High
+   Location: insecure.py:3
+   More Info: https://bandit.readthedocs.io/en/latest/blacklists/blacklist_imports.html#b403-import-pickle[0m
+2	import hashlib
+3	import pickle
+4	import random
+
+--------------------------------------------------
+[91m>> Issue: [B322:blacklist] The input method in Python 2 will read from standard input, evaluate and run the resulting string as python source code. This is similar, though in many ways worse, then using eval. On Python 2, use raw_input instead, input is safe in Python 3.
+   Severity: High   Confidence: High
+   Location: insecure.py:9
+   More Info: https://bandit.readthedocs.io/en/latest/blacklists/blacklist_calls.html#b322-input[0m
+8	
+9	command = input("Enter command: ")
+10	subprocess.call(command, shell=True)
+
+--------------------------------------------------
+[91m>> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True identified, security issue.
+   Severity: High   Confidence: High
+   Location: insecure.py:10
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b602_subprocess_popen_with_shell_equals_true.html[0m
+9	command = input("Enter command: ")
+10	subprocess.call(command, shell=True)
+11	
+
+--------------------------------------------------
+[93m>> Issue: [B303:blacklist] Use of insecure MD2, MD4, MD5, or SHA1 hash function.
+   Severity: Medium   Confidence: High
+   Location: insecure.py:12
+   More Info: https://bandit.readthedocs.io/en/latest/blacklists/blacklist_calls.html#b303-md5[0m
+11	
+12	print(hashlib.md5(b"hello").hexdigest())
+13	
+
+--------------------------------------------------
+[91m>> Issue: [B322:blacklist] The input method in Python 2 will read from standard input, evaluate and run the resulting string as python source code. This is similar, though in many ways worse, then using eval. On Python 2, use raw_input instead, input is safe in Python 3.
+   Severity: High   Confidence: High
+   Location: insecure.py:14
+   More Info: https://bandit.readthedocs.io/en/latest/blacklists/blacklist_calls.html#b322-input[0m
+13	
+14	data = input("Enter serialized object: ")
+15	pickle.loads(data.encode())
+
+--------------------------------------------------
+[93m>> Issue: [B301:blacklist] Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+   Severity: Medium   Confidence: High
+   Location: insecure.py:15
+   More Info: https://bandit.readthedocs.io/en/latest/blacklists/blacklist_calls.html#b301-pickle[0m
+14	data = input("Enter serialized object: ")
+15	pickle.loads(data.encode())
+16	
+
+--------------------------------------------------
+[94m>> Issue: [B311:blacklist] Standard pseudo-random generators are not suitable for security/cryptographic purposes.
+   Severity: Low   Confidence: High
+   Location: insecure.py:17
+   More Info: https://bandit.readthedocs.io/en/latest/blacklists/blacklist_calls.html#b311-random[0m
+16	
+17	print(random.random())
+18	
+
+--------------------------------------------------
+[94m>> Issue: [B605:start_process_with_a_shell] Starting a process with a shell: Seems safe, but may be changed in the future, consider rewriting without shell
+   Severity: Low   Confidence: High
+   Location: insecure.py:19
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b605_start_process_with_a_shell.html[0m
+18	
+19	os.system("ls")
+
+--------------------------------------------------
+[94m>> Issue: [B607:start_process_with_partial_path] Starting a process with a partial executable path
+   Severity: Low   Confidence: High
+   Location: insecure.py:19
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b607_start_process_with_partial_path.html[0m
+18	
+19	os.system("ls")
+
+--------------------------------------------------
+[95m
+Code scanned:[0m
+	Total lines of code: 13
+	Total lines skipped (#nosec): 0
+[95m
+Run metrics:[0m
+	Total issues (by severity):
+		Undefined: 0.0
+		Low: 5.0
+		Medium: 2.0
+		High: 3.0
+	Total issues (by confidence):
+		Undefined: 0.0
+		Low: 0.0
+		Medium: 0.0
+		High: 10.0
+[95mFiles skipped (0):[0m
+[?2004h]0;lokesh@LAPTOP-0TAIK340: ~/CryptographyLab/Lab2_Bandit[01;32mlokesh@LAPTOP-0TAIK340[00m:[01;34m~/CryptographyLab/Lab2_Bandit[00m$ [7mbandit -r . -f txt -o [27m[7mb[27m[7mandit_report.txt[27m[A]0;lokesh@LAPTOP-0TAIK340: ~/CryptographyLab/Lab2_Bandit[01;32mlokesh@LAPTOP-0TAIK340[00m:[01;34m~/CryptographyLab/Lab2_Bandit[00m$ bandit -r . -f txt -o bandit_report.txt
+[?2004l[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[main]	INFO	running on Python 3.12.3
+[text]	INFO	Text output written to file: bandit_report.txt
+[?2004h]0;lokesh@LAPTOP-0TAIK340: ~/CryptographyLab/Lab2_Bandit[01;32mlokesh@LAPTOP-0TAIK340[00m:[01;34m~/CryptographyLab/Lab2_Bandit[00m$ cat bandit [K)[K_report.txt
+[?2004lRun started:2026-08-06 06:31:01.033684
+
+Test results:
+>> Issue: [B404:blacklist] Consider possible security implications associated with subprocess module.
+   Severity: Low   Confidence: High
+   Location: ./insecure.py:1
+   More Info: https://bandit.readthedocs.io/en/latest/blacklists/blacklist_imports.html#b404-import-subprocess
+1	import subprocess
+2	import hashlib
+3	import pickle
+
+--------------------------------------------------
+>> Issue: [B403:blacklist] Consider possible security implications associated with pickle module.
+   Severity: Low   Confidence: High
+   Location: ./insecure.py:3
+   More Info: https://bandit.readthedocs.io/en/latest/blacklists/blacklist_imports.html#b403-import-pickle
+2	import hashlib
+3	import pickle
+4	import random
+
+--------------------------------------------------
+>> Issue: [B322:blacklist] The input method in Python 2 will read from standard input, evaluate and run the resulting string as python source code. This is similar, though in many ways worse, then using eval. On Python 2, use raw_input instead, input is safe in Python 3.
+   Severity: High   Confidence: High
+   Location: ./insecure.py:9
+   More Info: https://bandit.readthedocs.io/en/latest/blacklists/blacklist_calls.html#b322-input
+8	
+9	command = input("Enter command: ")
+10	subprocess.call(command, shell=True)
+
+--------------------------------------------------
+>> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True identified, security issue.
+   Severity: High   Confidence: High
+   Location: ./insecure.py:10
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b602_subprocess_popen_with_shell_equals_true.html
+9	command = input("Enter command: ")
+10	subprocess.call(command, shell=True)
+11	
+
+--------------------------------------------------
+>> Issue: [B303:blacklist] Use of insecure MD2, MD4, MD5, or SHA1 hash function.
+   Severity: Medium   Confidence: High
+   Location: ./insecure.py:12
+   More Info: https://bandit.readthedocs.io/en/latest/blacklists/blacklist_calls.html#b303-md5
+11	
+12	print(hashlib.md5(b"hello").hexdigest())
+13	
+
+--------------------------------------------------
+>> Issue: [B322:blacklist] The input method in Python 2 will read from standard input, evaluate and run the resulting string as python source code. This is similar, though in many ways worse, then using eval. On Python 2, use raw_input instead, input is safe in Python 3.
+   Severity: High   Confidence: High
+   Location: ./insecure.py:14
+   More Info: https://bandit.readthedocs.io/en/latest/blacklists/blacklist_calls.html#b322-input
+13	
+14	data = input("Enter serialized object: ")
+15	pickle.loads(data.encode())
+
+--------------------------------------------------
+>> Issue: [B301:blacklist] Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+   Severity: Medium   Confidence: High
+   Location: ./insecure.py:15
+   More Info: https://bandit.readthedocs.io/en/latest/blacklists/blacklist_calls.html#b301-pickle
+14	data = input("Enter serialized object: ")
+15	pickle.loads(data.encode())
+16	
+
+--------------------------------------------------
+>> Issue: [B311:blacklist] Standard pseudo-random generators are not suitable for security/cryptographic purposes.
+   Severity: Low   Confidence: High
+   Location: ./insecure.py:17
+   More Info: https://bandit.readthedocs.io/en/latest/blacklists/blacklist_calls.html#b311-random
+16	
+17	print(random.random())
+18	
+
+--------------------------------------------------
+>> Issue: [B605:start_process_with_a_shell] Starting a process with a shell: Seems safe, but may be changed in the future, consider rewriting without shell
+   Severity: Low   Confidence: High
+   Location: ./insecure.py:19
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b605_start_process_with_a_shell.html
+18	
+19	os.system("ls")
+
+--------------------------------------------------
+>> Issue: [B607:start_process_with_partial_path] Starting a process with a partial executable path
+   Severity: Low   Confidence: High
+   Location: ./insecure.py:19
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b607_start_process_with_partial_path.html
+18	
+19	os.system("ls")
+
+--------------------------------------------------
+
+Code scanned:
+	Total lines of code: 13
+	Total lines skipped (#nosec): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0.0
+		Low: 5.0
+		Medium: 2.0
+		High: 3.0
+	Total issues (by confidence):
+		Undefined: 0.0
+		Low: 0.0
+		Medium: 0.0
+		High: 10.0
+Files skipped (0):
+[?2004h]0;lokesh@LAPTOP-0TAIK340: ~/CryptographyLab/Lab2_Bandit[01;32mlokesh@LAPTOP-0TAIK340[00m:[01;34m~/CryptographyLab/Lab2_Bandit[00m$ ls
+[?2004lbandit_report.txt  insecure.py  sast_lab_log.txt
+[?2004h]0;lokesh@LAPTOP-0TAIK340: ~/CryptographyLab/Lab2_Bandit[01;32mlokesh@LAPTOP-0TAIK340[00m:[01;34m~/CryptographyLab/Lab2_Bandit[00m$ exit
+[?2004lexit
+
+Script done on 2026-08-06 06:31:42+00:00 [COMMAND_EXIT_CODE="0"]
