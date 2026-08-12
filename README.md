@@ -158,7 +158,41 @@ flowchart TD
 
 ---
 
-## ✅ Lab2 Work (upcoming)
+## ✅ Lab 2 — Static Application Security Testing (SAST)
+
+### Overview
+Lab 2 introduced **Static Application Security Testing** using [Bandit](https://bandit.readthedocs.io/), a Python SAST tool. The goal was to deliberately write insecure code, scan it with Bandit, and document findings with remediation strategies.
+
+### Work Done
+
+| File | Description |
+|---|---|
+| `Secure_Application/insecure.py` | Intentionally vulnerable Python program demonstrating 9 common security flaws |
+| `Secure_Application/bandit_report.txt` | Raw Bandit scan output (10 issues: 3 High, 2 Medium, 5 Low) |
+| `Secure_Application/bandit_analysis_report.md` | Detailed analysis of every finding with exploit explanation and secure fix |
+| `Secure_Application/installation_record.md` | Bandit installation procedure, OS info, version, and dependencies |
+| `Secure_Application/sast_lab_log.txt` | Full terminal session log of the lab |
+| `Secure_Application/command_history.txt` | Command history for reproducibility |
+
+### Vulnerabilities Found in `insecure.py`
+
+| Bandit ID | Severity | Issue |
+|---|---|---|
+| B602 | **High** | `subprocess.call()` with `shell=True` — OS command injection |
+| B322 | **High** | `input()` feeding shell command |
+| B322 | **High** | `input()` feeding `pickle.loads()` |
+| B303 | Medium | MD5 used for hashing (cryptographically broken) |
+| B301 | Medium | `pickle.loads()` on untrusted user data — RCE risk |
+| B404 | Low | Import of `subprocess` module |
+| B403 | Low | Import of `pickle` module |
+| B311 | Low | `random.random()` used (not cryptographically secure) |
+| B605/B607 | Low | `os.system()` with shell + partial path |
+
+### Key Takeaways
+- Never use `shell=True` with user-controlled input
+- `pickle` should never deserialize untrusted data
+- MD5/SHA1 are broken — use SHA-256 or above
+- Use Python's `secrets` module (not `random`) for cryptographic values
 
 ---
 
@@ -167,25 +201,40 @@ flowchart TD
 ```
 CryptoLabX_Group01/
 │
-├── main.py                  # Entry point — CLI menu & main loop
+├── main.py                        # Entry point — CLI menu & main loop
 │
 ├── utils/
-│   ├── __init__.py          # Package initializer
-│   ├── file_analysis.py     # Task 4: Text statistics & letter frequency
-│   └── logger.py            # Task 5: Timestamped action logger
+│   ├── __init__.py                # Package initializer
+│   ├── file_analysis.py           # Task 4: Text statistics & letter frequency
+│   └── logger.py                  # Task 5: Timestamped action logger
 │
 ├── datasets/
-│   ├── data1.txt            # Sample plaintext corpus (5 files)
+│   ├── data1.txt                  # Sample plaintext corpus (5 files)
 │   ├── data2.txt
 │   ├── data3.txt
 │   ├── data4.txt
 │   └── data5.txt
 │
-├── resources/               # Lab assignment PDFs & reference material
-├── outputs/                 # Auto-generated: cryptolabx.log (gitignored)
-├── requirements.txt         # Dependency list (stdlib only for Lab 1)
-├── .gitignore               # Git exclusions
-└── README.md                # This file
+├── Secure_Application/            # Lab 2: SAST work
+│   ├── insecure.py                # Deliberately vulnerable program
+│   ├── bandit_report.txt          # Raw Bandit scan output
+│   ├── bandit_analysis_report.md  # Detailed findings + remediation
+│   ├── installation_record.md     # Bandit setup procedure
+│   ├── sast_lab_log.txt           # Full terminal session log
+│   └── command_history.txt        # Commands for reproducibility
+│
+├── classical/                     # Future: Caesar, Vigenère, etc.
+├── modern/                        # Future: AES, RSA, etc.
+├── attacks/                       # Future: Frequency analysis, Kasiski
+├── analysis/                      # Future: Statistical tools
+├── tests/                         # Future: Unit tests
+├── docs/                          # Future: Lab reports & documentation
+│
+├── resources/                     # Lab assignment PDFs (gitignored)
+├── outputs/                       # Auto-generated: cryptolabx.log (gitignored)
+├── requirements.txt               # Dependency list
+├── .gitignore                     # Git exclusions
+└── README.md                      # This file
 ```
 
 ---
@@ -222,6 +271,7 @@ python main.py
 | Lab | Tasks Completed | Status |
 |-----|----------------|--------|
 | Lab 1 | Project init, datasets, CLI menu, file analysis, logger | ✅ Done |
+| Lab 2 | SAST with Bandit — insecure program, scan, analysis report, installation record | ✅ Done |
 
 ---
 
