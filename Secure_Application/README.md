@@ -137,4 +137,88 @@ database.py     data layer (no imports from other src files)
 
 ---
 
+## Program Flow Diagram
+
+```mermaid
+flowchart TD
+    A([🚀 START — python atm.py]) --> B[print_banner\nATM System Title]
+    B --> C{Press ENTER\nor Q?}
+
+    C -->|Q| Z([🔴 EXIT — Goodbye])
+
+    C -->|ENTER| D[attempts = 0\nMAX = 3]
+
+    D --> E["auth.login()\nEnter Account Number + PIN"]
+
+    E --> E1["database.get_account(account_number)"]
+    E1 --> E2{Account\nfound?}
+
+    E2 -->|No — KeyError| E3["⚠️ VULN-3: Print full\ntraceback to console\nreturn None, None"]
+    E2 -->|Yes| E4{PIN\nmatches?}
+
+    E4 -->|No| E5["Print: Incorrect PIN\nreturn None, None"]
+    E4 -->|Yes| E6["Print: Welcome, name!\nreturn account_number, account"]
+
+    E3 --> F{attempts < 3?}
+    E5 --> F
+
+    F -->|Yes — retry| E
+    F -->|No — blocked| G["Print: Card Blocked\ngo back to outer loop"]
+    G --> C
+
+    E6 --> H["✅ AUTHENTICATED SESSION"]
+
+    H --> I[print_menu\n1 Balance 2 Withdraw\n3 Deposit 4 PIN 0 Logout]
+
+    I --> J{User\nOption}
+
+    J -->|1 Balance| K["account.balance_inquiry()\nget_account → print balance\n⚠️ VULN-3: prints full dict"]
+    K --> I
+
+    J -->|2 Withdraw| L["account.withdraw()\nInput: amount"]
+    L --> L1["float(raw)\n⚠️ VULN-2: no validation\nNegative allowed"]
+    L1 --> L2{amount >\ncurrent balance?}
+    L2 -->|Yes| L3["Print: Insufficient funds"]
+    L2 -->|No| L4["new_balance = balance - amount\nupdate_balance()\nPrint: dispensed + new balance"]
+    L3 --> I
+    L4 --> I
+
+    J -->|3 Deposit| M["account.deposit()\nInput: amount"]
+    M --> M1["float(raw)\n⚠️ VULN-2: no validation\nNegative reduces balance"]
+    M1 --> M2["new_balance = balance + amount\nupdate_balance()\nPrint: deposited + new balance"]
+    M2 --> I
+
+    J -->|4 Change PIN| N["auth.change_pin()\nEnter current PIN"]
+    N --> N1{Current PIN\ncorrect?}
+    N1 -->|No| N2["Print: Incorrect PIN"]
+    N1 -->|Yes| N3["Enter new PIN\nConfirm new PIN\n⚠️ VULN-2: no complexity check"]
+    N3 --> N4{PINs\nmatch?}
+    N4 -->|No| N5["Print: PINs do not match"]
+    N4 -->|Yes| N6["update_pin()\n⚠️ VULN-3: print new PIN\nin confirmation message"]
+    N2 --> I
+    N5 --> I
+    N6 --> I
+
+    J -->|0 Logout| O["Print: Logged out\nBreak inner loop"]
+    O --> C
+
+    J -->|Invalid| P["Print: Invalid option 0-4"]
+    P --> I
+
+    style E3 fill:#ff6b6b,color:#fff
+    style L1 fill:#ff6b6b,color:#fff
+    style M1 fill:#ff6b6b,color:#fff
+    style N3 fill:#ff6b6b,color:#fff
+    style N6 fill:#ff6b6b,color:#fff
+    style K fill:#ffa94d,color:#000
+    style H fill:#69db7c,color:#000
+    style Z fill:#ced4da,color:#000
+```
+
+> 🔴 **Red nodes** = deliberate vulnerability points (VULN-1/2/3)
+> 🟠 **Orange node** = information leakage during normal operation
+> 🟢 **Green node** = successful authentication checkpoint
+
+---
+
 *CryptoLabX Group 01 | Nishant (2024UCP1773) | Lokesh Saini (2024UCP1505) | 22CPP307 | MNIT Jaipur*
