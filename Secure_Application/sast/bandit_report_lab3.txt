@@ -1,81 +1,61 @@
-Run started:2026-08-13 06:09:05.193563+00:00
+Run started:2026-08-13 07:18:28.562576+00:00
 
 Test results:
->> Issue: [B605:start_process_with_a_shell] Starting a process with a shell: Seems safe, but may be changed in the future, consider rewriting without shell
-   Severity: Low   Confidence: High
-   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
-   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b605_start_process_with_a_shell.html
-   Location: Secure_Application/src/atm.py:40:15
-39	def print_banner() -> None:
-40	    import os; os.system("")   # enable ANSI on Windows
-41	    print(f"""
-
---------------------------------------------------
->> Issue: [B607:start_process_with_partial_path] Starting a process with a partial executable path
-   Severity: Low   Confidence: High
-   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
-   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html
-   Location: Secure_Application/src/atm.py:40:15
-39	def print_banner() -> None:
-40	    import os; os.system("")   # enable ANSI on Windows
-41	    print(f"""
-
---------------------------------------------------
 >> Issue: [B105:hardcoded_password_string] Possible hardcoded password: 'admin@123'
    Severity: Low   Confidence: Medium
    CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
    More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b105_hardcoded_password_string.html
-   Location: Secure_Application/src/database.py:26:17
-25	# B106: hardcoded_password_funcarg — password values hardcoded as arguments
-26	ADMIN_PASSWORD = "admin@123"      # B105: hardcoded_password_string
-27	SECRET_KEY     = "atm_secret_99"  # B105: hardcoded_password_string
+   Location: src\database.py:20:17
+19      # B106: hardcoded_password_funcarg — password values hardcoded as arguments
+20      ADMIN_PASSWORD = "admin@123"      # B105: hardcoded_password_string
+21      SECRET_KEY     = "atm_secret_99"  # B105: hardcoded_password_string
 
 --------------------------------------------------
 >> Issue: [B105:hardcoded_password_string] Possible hardcoded password: 'atm_secret_99'
    Severity: Low   Confidence: Medium
    CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
    More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b105_hardcoded_password_string.html
-   Location: Secure_Application/src/database.py:27:17
-26	ADMIN_PASSWORD = "admin@123"      # B105: hardcoded_password_string
-27	SECRET_KEY     = "atm_secret_99"  # B105: hardcoded_password_string
-28	
+   Location: src\database.py:21:17
+20      ADMIN_PASSWORD = "admin@123"      # B105: hardcoded_password_string
+21      SECRET_KEY     = "atm_secret_99"  # B105: hardcoded_password_string
+22
 
 --------------------------------------------------
 >> Issue: [B324:hashlib] Use of weak MD5 hash for security. Consider usedforsecurity=False
    Severity: High   Confidence: High
    CWE: CWE-327 (https://cwe.mitre.org/data/definitions/327.html)
    More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b324_hashlib.html
-   Location: Secure_Application/src/database.py:35:20
-34	        # [VULN-1] Using MD5 to "verify" PIN — B303: insecure hash
-35	        "pin_hash": hashlib.md5(b"1234").hexdigest(),
-36	    },
+   Location: src\database.py:29:20
+28              # [VULN-1] Using MD5 to "verify" PIN — B303: insecure hash
+29              "pin_hash": hashlib.md5(b"1234").hexdigest(),
+30          },
 
 --------------------------------------------------
 >> Issue: [B324:hashlib] Use of weak MD5 hash for security. Consider usedforsecurity=False
    Severity: High   Confidence: High
    CWE: CWE-327 (https://cwe.mitre.org/data/definitions/327.html)
    More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b324_hashlib.html
-   Location: Secure_Application/src/database.py:41:20
-40	        "balance": 8500.50,
-41	        "pin_hash": hashlib.md5(b"4321").hexdigest(),
-42	    },
+   Location: src\database.py:35:20
+34              "balance": 8500.50,
+35              "pin_hash": hashlib.md5(b"4321").hexdigest(),
+36          },
 
 --------------------------------------------------
 
 Code scanned:
-	Total lines of code: 263
-	Total lines skipped (#nosec): 0
-	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+        Total lines of code: 234
+        Total lines of code: 234
+        Total lines skipped (#nosec): 0
 
 Run metrics:
-	Total issues (by severity):
-		Undefined: 0
-		Low: 4
-		Medium: 0
-		High: 2
-	Total issues (by confidence):
-		Undefined: 0
-		Low: 0
-		Medium: 2
-		High: 4
+        Total issues (by severity):
+                Undefined: 0
+                Low: 2
+                Medium: 0
+                High: 2
+        Total issues (by confidence):
+                Undefined: 0
+                Low: 0
+                Medium: 2
+                High: 2
 Files skipped (0):
