@@ -167,12 +167,12 @@ Lab 2 introduced **Static Application Security Testing** using [Bandit](https://
 
 | File | Description |
 |---|---|
-| `Secure_Application/insecure.py` | Intentionally vulnerable Python program demonstrating 9 common security flaws |
-| `Secure_Application/bandit_report.txt` | Raw Bandit scan output (10 issues: 3 High, 2 Medium, 5 Low) |
-| `Secure_Application/bandit_analysis_report.md` | Detailed analysis of every finding with exploit explanation and secure fix |
-| `Secure_Application/installation_record.md` | Bandit installation procedure, OS info, version, and dependencies |
-| `Secure_Application/sast_lab_log.txt` | Full terminal session log of the lab |
-| `Secure_Application/command_history.txt` | Command history for reproducibility |
+| `Lab2_SAST_Bandit/insecure.py` | Intentionally vulnerable Python program demonstrating 9 common security flaws |
+| `Lab2_SAST_Bandit/bandit_report.txt` | Raw Bandit scan output (10 issues: 3 High, 2 Medium, 5 Low) |
+| `Lab2_SAST_Bandit/bandit_analysis_report.md` | Detailed analysis of every finding with exploit explanation and secure fix |
+| `Lab2_SAST_Bandit/installation_record.md` | Bandit installation procedure, OS info, version, and dependencies |
+| `Lab2_SAST_Bandit/sast_lab_log.txt` | Full terminal session log of the lab |
+| `Lab2_SAST_Bandit/command_history.txt` | Command history for reproducibility |
 
 ### Vulnerabilities Found in `insecure.py`
 
@@ -196,17 +196,62 @@ Lab 2 introduced **Static Application Security Testing** using [Bandit](https://
 
 ---
 
+## ✅ Lab 3 — Vulnerable Application Development: ATM System
+
+### Overview
+Lab 3 extends the SAST methodology from Lab 2 by going one step further: instead of scanning a single insecure script, we **designed and built a complete modular application** with deliberate vulnerabilities, then scanned, documented, and analysed the results.
+
+**Application:** ATM System (Group 1, assigned by Group No. % 10)  
+**Architecture:** 4 modules (`atm.py`, `auth.py`, `account.py`, `database.py`)  
+**Run:** `py -3 Secure_Application/src/atm.py`
+
+### Core Functionalities Implemented
+
+| # | Feature | Module |
+|---|---|---|
+| 1 | Login (account + PIN) | `auth.py` → `login()` |
+| 2 | Balance Inquiry | `account.py` → `balance_inquiry()` |
+| 3 | Cash Withdrawal | `account.py` → `withdraw()` |
+| 4 | Cash Deposit | `account.py` → `deposit()` |
+| 5 | PIN Change | `auth.py` → `change_pin()` |
+
+### Deliberate Vulnerabilities
+
+| # | Vulnerability | CWE | Bandit Rule | Demo |
+|---|---|---|---|---|
+| VULN-1 | **Hardcoded credentials** — PINs & admin password in source | CWE-259 | B105 | Open `database.py`, read PINs directly |
+| VULN-1b | **MD5 used for PIN hashing** — cryptographically broken | CWE-327 | B324 (High) | Bandit flags 2 High severity issues |
+| VULN-2 | **Improper input validation** — negative withdrawal increases balance | CWE-20 | Logic flaw | Enter `-500` at withdrawal prompt |
+| VULN-3 | **Information leakage** — full tracebacks & PIN echoed to screen | CWE-209 | Logic flaw | Enter `0000000000` at login |
+
+### Bandit Scan Results
+
+```
+Total: 6 issues | 2 High | 0 Medium | 4 Low
+```
+
+| Rule | Severity | Location | Issue |
+|---|---|---|---|
+| B324 | **High** | `database.py:35,41` | `hashlib.md5()` for PIN verification |
+| B105 | Low | `database.py:26,27` | Hardcoded password/secret strings |
+| B605/B607 | Low | `atm.py:40` | `os.system("")` for ANSI on Windows |
+
+### Key Takeaway
+SAST tools (Bandit) detect **pattern-based** vulnerabilities (hardcoded strings, weak hashes) but **cannot detect logic flaws** like VULN-2 and VULN-3. Manual code review remains essential.
+
+---
+
 ## 📁 Project Structure
 
 ```
 CryptoLabX_Group01/
 │
-├── main.py                        # Entry point — CLI menu & main loop
+├── main.py                        # Lab 1: CLI entry point & main loop
 │
 ├── utils/
 │   ├── __init__.py                # Package initializer
-│   ├── file_analysis.py           # Task 4: Text statistics & letter frequency
-│   └── logger.py                  # Task 5: Timestamped action logger
+│   ├── file_analysis.py           # Text statistics & letter frequency
+│   └── logger.py                  # Timestamped action logger
 │
 ├── datasets/
 │   ├── data1.txt                  # Sample plaintext corpus (5 files)
@@ -215,22 +260,34 @@ CryptoLabX_Group01/
 │   ├── data4.txt
 │   └── data5.txt
 │
-├── Secure_Application/            # Lab 2: SAST work
-│   ├── insecure.py                # Deliberately vulnerable program
+├── Lab2_SAST_Bandit/              # Lab 2: SAST work (Bandit on insecure.py)
+│   ├── insecure.py                # Deliberately vulnerable test program
 │   ├── bandit_report.txt          # Raw Bandit scan output
 │   ├── bandit_analysis_report.md  # Detailed findings + remediation
 │   ├── installation_record.md     # Bandit setup procedure
 │   ├── sast_lab_log.txt           # Full terminal session log
 │   └── command_history.txt        # Commands for reproducibility
 │
-├── classical/                     # Future: Caesar, Vigenère, etc.
-├── modern/                        # Future: AES, RSA, etc.
+├── Secure_Application/            # Lab 3: ATM System (vulnerable app)
+│   ├── README.md                  # Folder-level documentation
+│   ├── src/
+│   │   ├── atm.py             # Entry point & menu loop
+│   │   ├── auth.py            # Login & PIN change
+│   │   ├── account.py         # Balance, withdraw, deposit
+│   │   └── database.py        # In-memory account store
+│   ├── sast/
+│   │   └── bandit_report_lab3.txt  # Bandit scan output
+│   ├── reports/               # Analysis reports (add here)
+│   └── screenshots/           # Demo screenshots (add here)
+│
+├── classical/                     # Future: Caesar, Vigenère ciphers
+├── modern/                        # Future: AES, RSA
 ├── attacks/                       # Future: Frequency analysis, Kasiski
 ├── analysis/                      # Future: Statistical tools
 ├── tests/                         # Future: Unit tests
 ├── docs/                          # Future: Lab reports & documentation
 │
-├── resources/                     # Lab assignment PDFs (gitignored)
+├── resources/                     # Assignment PDFs & reference docs (gitignored)
 ├── outputs/                       # Auto-generated: cryptolabx.log (gitignored)
 ├── requirements.txt               # Dependency list
 ├── .gitignore                     # Git exclusions
@@ -272,6 +329,7 @@ python main.py
 |-----|----------------|--------|
 | Lab 1 | Project init, datasets, CLI menu, file analysis, logger | ✅ Done |
 | Lab 2 | SAST with Bandit — insecure program, scan, analysis report, installation record | ✅ Done |
+| Lab 3 | ATM System — modular Python app, 3 deliberate vulns, Bandit scan, SAST report | ✅ Done |
 
 ---
 
