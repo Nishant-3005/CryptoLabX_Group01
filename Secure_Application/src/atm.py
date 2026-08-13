@@ -2,9 +2,6 @@
 atm.py — ATM System Entry Point
 ================================
 Lab 3 | Secure Application | CryptoLabX Group 01
-Course: Cryptography Laboratory (22CPP307)
-
-Application : ATM System (Group 1 — Group No. % 10 = 1)
 SAST Tool   : Bandit
 Language    : Python 3
 
@@ -15,13 +12,11 @@ Core Functionalities:
   4. Deposit              (account.deposit)
   5. PIN Change           (auth.change_pin)
 
-Deliberate Vulnerabilities (for SAST demonstration):
+Deliberate Vulnerabilities:
   VULN-1  Hardcoded Credentials    (database.py — B105/B106)
   VULN-2  Improper Input Validation (account.py — no bounds checks)
   VULN-3  Information Leakage via Error Messages (auth.py, account.py)
 
-Run:
-  python atm.py
 """
 
 from auth    import login, change_pin
@@ -37,18 +32,10 @@ X = "\033[0m"    # reset
 
 
 def print_banner() -> None:
-    import os; os.system("")   # enable ANSI on Windows
     print(f"""
 {C}{W}
   ================================================
-    ___  _____  __  __   ____  _   _  _  _
-   / _ \|_   _||  \/  | / ___|| | | || \| |
-  | | | | | |  | |\/| || |    | |_| ||  ` |
-  | |_| | | |  | |  | || |___ |  _  || |\  |
-   \__\_\ |_|  |_|  |_| \____||_| |_||_| \_|
-
         Automated Teller Machine System
-        CryptoLabX Group 01 | Lab 3
   ================================================
 {X}""")
 

@@ -1,17 +1,11 @@
 """
 database.py — In-memory account store for ATM System
-=====================================================
-Lab 3 | Secure Application | CryptoLabX Group 01
 
-VULNERABILITY EMBEDDED (Intentional for SAST Lab):
+VULNERABILITY EMBEDDED:
   [VULN-3] Information Leakage via Error Messages
   - Full exception details (including internal account structure)
     are printed directly to the console on any error.
-  - In a real system, errors should be logged server-side only;
-    the user should see a generic message.
 
-NOTE: This file uses an in-memory dict as a stand-in for a database.
-      No real DB or file persistence is used (minimalistic design).
 """
 
 # ──────────────────────────────────────────────────────────────────────────────

@@ -1,22 +1,19 @@
 """
 account.py — Core ATM Transactions
-=====================================
-Lab 3 | Secure Application | CryptoLabX Group 01
 
-Core Functionalities Covered:
+Core Functionalities Covered for authenticated users:
   - Balance Inquiry
   - Withdrawal
   - Deposit
 
-VULNERABILITY EMBEDDED (Intentional for SAST Lab):
+VULNERABILITY EMBEDDED:
   [VULN-2] Improper Input Validation
   - Withdrawal and deposit amounts are not checked for:
       * Negative values        → allows "withdrawing" -500 to ADD funds
       * Zero                   → pointless transaction allowed
       * Non-numeric strings    → raises unhandled ValueError
       * Exceeding balance      → no overdraft protection enforced consistently
-  - The raw ValueError from float() conversion is printed in full,
-    leaking the internal call stack (VULN-3 overlap).
+
 """
 
 import traceback
@@ -38,9 +35,7 @@ def withdraw(account_number: str, account: dict) -> None:
 
     [VULN-2] No input validation:
       - Negative amount accepted → effectively deposits money
-      - Non-numeric input causes an unhandled exception whose full
-        traceback is printed (VULN-3)
-      - Amount of 0 is accepted silently
+
     """
     print("\n  === WITHDRAWAL ===")
     raw = input("  Enter amount to withdraw: Rs. ").strip()

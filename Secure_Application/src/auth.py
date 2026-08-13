@@ -1,16 +1,13 @@
 """
 auth.py — Authentication & PIN Management
-==========================================
-Lab 3 | Secure Application | CryptoLabX Group 01
 
-Core Functionalities Covered:
-  - Login (account number + PIN verification)
+  - Login
   - PIN Change
 
-VULNERABILITY EMBEDDED (Intentional for SAST Lab):
+VULNERABILITY EMBEDDED:
   [VULN-1] Hardcoded Credentials
   - PINs are compared against values hardcoded in database.py.
-  - No hashing, salting, or secure comparison is used.
+  - No hashing.
 
   [VULN-3] Information Leakage via Error Messages
   - On login failure the full exception object is printed,
@@ -26,8 +23,6 @@ def login() -> tuple[str, dict] | tuple[None, None]:
     Prompt for account number and PIN.
     Returns (account_number, account_dict) on success, (None, None) on failure.
 
-    [VULN-3] The except block prints the full traceback, leaking
-    internal details (account structure, key names) on bad input.
     """
     print("\n  === ATM LOGIN ===")
     account_number = input("  Enter Account Number: ").strip()
@@ -36,7 +31,6 @@ def login() -> tuple[str, dict] | tuple[None, None]:
     try:
         account = get_account(account_number)
 
-        # [VULN-1] Plain-text PIN comparison — no hashing
         if account["pin"] == pin:
             print(f"\n  Welcome, {account['name']}!")
             return account_number, account
