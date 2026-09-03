@@ -1,27 +1,57 @@
-Introduction to Modern Cryptography
-Katz & Lindell — Chapter 1, Section 1.3 (Reference: Page 31 area)
-Group 01 Source Text for Lab 5 Monoalphabetic Substitution Cipher Analysis
+Perfectly-Secret Encryption
+Katz and Lindell — Introduction to Modern Cryptography
+Page 31 — Chapter 2: Perfectly-Secret Encryption
 
-THE SHIFT CIPHER AND HISTORICAL BACKGROUND
+THE DEFINITION
 
-Historical ciphers provide a useful starting point for understanding modern cryptography not because they are secure by any means but because they illustrate the general principles of encryption and the way in which security is defined and analyzed.
+We are now ready to define the notion of perfect secrecy.
+Intuitively we imagine an adversary who knows the probability distribution
+over M that is the adversary knows the likelihood that different messages
+will be sent as in the example given above. The adversary then observes
+some ciphertext being sent by one party to the other. Ideally observing this
+ciphertext should have no effect on the knowledge of the adversary in other
+words the a posteriori likelihood that some message m was sent even given
+the ciphertext that was seen should be no different from the a priori proba-
+bility that m would be sent. This should hold for any m in M. Furthermore
+this should hold even if the adversary has unbounded computational power.
+This means that a ciphertext reveals nothing about the underlying plaintext
+and thus an adversary who intercepts a ciphertext learns absolutely nothing
+about the plaintext that was encrypted. Formally:
 
-One of the oldest known ciphers is the Caesar cipher which Julius Caesar reportedly used to encrypt his military communications. The cipher operates by shifting each letter of the plaintext by a fixed number of positions in the alphabet. For example with a shift of three the letter a becomes d the letter b becomes e and so on wrapping around so that x becomes a y becomes b and z becomes c.
+DEFINITION 2.1 An encryption scheme over a message space M is
+perfectly secret if for every probability distribution over M every message
+m in M and every ciphertext c in C for which the probability that C equals c
+is greater than zero: the probability that M equals m given C equals c is
+equal to the probability that M equals m.
 
-The monoalphabetic substitution cipher is a significant generalization of the Caesar cipher. Rather than simply shifting all letters by the same amount a substitution cipher replaces each letter with an arbitrary other letter according to a fixed permutation of the alphabet. The key for a substitution cipher is thus a permutation of the twenty six letters of the alphabet giving a key space of size twenty six factorial which is approximately four times ten to the twenty sixth power.
+The requirement that the probability that C equals c is greater than zero
+is a technical one needed to prevent conditioning on a zero-probability event.
+Another way of interpreting Definition 2.1 is that a scheme is perfectly
+secret if the distributions over messages and ciphertexts are independent.
 
-Despite this astronomically large key space the substitution cipher is completely insecure against a ciphertext only attack. The reason is that natural language has a great deal of statistical structure that is preserved by a monoalphabetic substitution. In English the letter e is the most frequently occurring letter appearing in about thirteen percent of all text. The letter t is the second most frequent at about nine percent followed by a at eight percent. Since a monoalphabetic substitution simply relabels the letters these frequency statistics are entirely preserved in the ciphertext.
+A SIMPLIFYING CONVENTION
 
-An attacker who observes a sufficiently long ciphertext can simply rank the ciphertext letters by frequency and guess that the most frequent ciphertext letter corresponds to e the second most frequent corresponds to t and so on. This attack is known as frequency analysis and it was first described in detail by the ninth century Arab scholar al Kindi in his treatise on deciphering cryptographic messages.
+In this chapter we consider only probability distributions over M and C
+that assign non-zero probabilities to all m in M and c in C. This significantly
+simplifies the presentation because we often need to divide by the probability
+that M equals m or the probability that C equals c which is a problem if they
+may equal zero. Likewise as in Definition 2.1 we sometimes need to condition
+on the event C equals c or M equals m. This too is problematic if those events
+have zero probability. Due to this simplifying convention we will not mention
+from here on the requirement that the probability that M equals m is greater
+than zero or the probability that C equals c is greater than zero even though
+it is actually required.
 
-Even when frequency analysis alone does not immediately reveal the full key an attacker can use additional techniques. Short words provide clues because the most common single letter words in English are a and i and the most common two letter words include of to in is it be as at so we he by or on do if me my up an go no us am. Three letter words include the and for are but not you all can her was one our out day get has him his how its let man new now old see two way who did its let put say she too use dad mom did its men far few get got him his how. Digrams and trigrams the most common pairs and triples of letters in English also constrain the possibilities.
+We stress that this convention is only meant to simplify the exposition and
+is not a fundamental limitation. In particular all the theorems we prove can
+be appropriately adapted to the case of arbitrary distributions over M and C
+that may assign some messages or ciphertexts probability zero. See also
+Exercise 2.6.
 
-The vulnerability of the substitution cipher demonstrates a fundamental lesson that would be repeatedly confirmed throughout the history of cryptography namely that security cannot be based on the secrecy of the algorithm alone. Even with a key space of twenty six factorial any cipher that preserves the statistical properties of the plaintext will be vulnerable. True security requires that the ciphertext be statistically indistinguishable from random noise to any adversary who does not know the key.
+AN EQUIVALENT FORMULATION
 
-This insight eventually led to the development of polyalphabetic ciphers such as the Vigenere cipher which attempts to flatten the frequency distribution by using multiple substitution alphabets. However even the Vigenere cipher was eventually broken through the Kasiski examination and the index of coincidence method developed by Charles Babbage and Friedrich Kasiski in the nineteenth century.
+The following lemma gives an equivalent formulation of Definition 2.1.
 
-The study of these classical ciphers and their cryptanalysis is valuable not merely for historical interest but because it introduces the core methodology of modern cryptographic analysis. We define a scheme we consider what information the adversary has access to we ask whether any efficient adversary can distinguish ciphertext from random noise and we seek to prove that no such adversary exists under well defined computational assumptions.
-
-Source: Based on content from Introduction to Modern Cryptography by Jonathan Katz and Yehuda Lindell, Chapter 1.
-Used for educational purposes in CryptoLabX Lab 5 — Monoalphabetic Substitution Cipher Analysis.
-Group 01 | Nishant (2024UCP1773) | Lokesh Saini (2024UCP1505) | 22CPP307 | MNIT Jaipur
+Source: Introduction to Modern Cryptography by Jonathan Katz and Yehuda Lindell
+Page 31 — Used for CryptoLabX Lab 5 Monoalphabetic Substitution Cipher Analysis
+Group 01 — Nishant (2024UCP1773) and Lokesh Saini (2024UCP1505) — 22CPP307 — MNIT Jaipur
