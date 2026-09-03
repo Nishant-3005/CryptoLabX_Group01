@@ -1,7 +1,7 @@
 # 🔐 CryptoLabX — Cryptography Laboratory Toolkit
 
 > **Course:** Cryptography Laboratory (22CPP307)
-> **Group:** 01 | **Lab Assignment:** 1 — Python Foundations for Cryptography
+> **Group:** 01 | Labs 1–5 — Python Foundations · SAST · ATM System · Shift Cipher Attack · Monoalphabetic Substitution Attack
 
 ---
 
@@ -241,6 +241,78 @@ SAST tools (Bandit) detect **pattern-based** vulnerabilities (hardcoded strings,
 
 ---
 
+## ✅ Lab 4 — Shift Cipher Cryptanalysis
+
+### Overview
+Lab 4 implemented **two automated cryptanalysis attacks** against the classical Shift (Caesar) Cipher — which has only 26 possible keys — using a brute-force approach scored by English language evidence.
+
+**Folder:** `attacks/shift_cipher_attack/`
+
+### Attacks Implemented
+
+| Attack | File | How it Works |
+|--------|------|--------------|
+| **Brute-Force + Dictionary Scoring** | `brute_force_dictionary.py` | Tries all 26 keys; counts real English words in each decryption; highest word-match count = predicted key |
+| **Chi-Square Statistical Analysis** | `chi_square_attack.py` | Tries all 26 keys; computes χ² distance between observed letter frequencies and English reference; lowest χ² = predicted key |
+| **Shift Cipher Core** | `shift_cipher.py` | `encrypt(pt, key)` and `decrypt(ct, key)` using formula C = (P + k) mod 26 |
+| **Unified Runner** | `main.py` | Runs both attacks, compares results, interactive mode, outputs test results table |
+
+### Key Results
+- Both attacks correctly identified the key for long English texts (≥ 30 characters)
+- Dictionary scoring outperforms Chi-Square on short texts with common words
+- Chi-Square outperforms dictionary scoring on texts with proper nouns or unusual vocabulary
+- A combined strategy (top-3 Chi-Square candidates validated by dictionary scoring) gave best results
+
+### English Letter Frequency Used
+```
+E=12.7%  T=9.1%  A=8.2%  O=7.5%  I=7.0%  N=6.7%  S=6.3%  H=6.1%  R=6.0%  D=4.3%
+```
+
+---
+
+## ✅ Lab 5 — Monoalphabetic Substitution Cipher Cryptanalysis
+
+### Overview
+Lab 5 implemented and then **broke** a Monoalphabetic Substitution Cipher — where each letter maps to a unique fixed replacement. With 26! ≈ 4×10²⁶ possible keys, brute force is computationally infeasible. Instead, three complementary attacks are applied in sequence.
+
+**Folder:** `attacks/monosubstitution_cipher_attack/`  
+**Source Text:** *Introduction to Modern Cryptography* — Katz & Lindell, Page 31 (Definition of Perfect Secrecy)
+
+### Modules Implemented
+
+| File | Functions | Purpose |
+|------|-----------|--------|
+| `monosubstitution_cipher.py` | `encrypt()`, `decrypt()`, `generate_random_key()` | Core cipher |
+| `frequency_analysis.py` | `frequency_analysis()`, `word_frequency_analysis()`, `pattern_analysis()` | All 3 required analysis functions |
+| `cryptanalysis.py` | `apply_substitution()`, `display_partial_plaintext()`, `verify_solution()` | Iterative key recovery |
+| `main.py` | Full orchestrator | Interactive + auto-demo modes |
+
+### Attack Pipeline
+
+```
+Step 1: frequency_analysis()       → rank CT letters; top = likely E, T, A...
+Step 2: word_frequency_analysis()  → most frequent 3-letter word = "THE"
+Step 3: pattern_analysis()         → match word patterns to English candidates
+Step 4: apply_substitution()       → build partial key; display _ for unknowns
+Step 5: verify_solution()          → re-encrypt and confirm exact match
+```
+
+### Experimental Results (Katz & Lindell Page 31)
+
+| Step | Observation | Substitution | Outcome |
+|------|------------|--------------|--------|
+| 1 | CT letter `O` most frequent (12.9%) | O → E | Accepted |
+| 2 | CT word `EIO` appears 89 times | EIO → THE | Accepted — 3 letters fixed |
+| 3 | CT word `EB` appears 47 times | EB → TO | Accepted — 2 more letters |
+| 4 | CT word `TKL` appears 31 times | TKL → AND | Accepted — 3 more letters |
+| 5–11 | Context clues from partial text | Remaining 18 letters filled iteratively | All 26 resolved |
+| 12 | `verify_solution()` called | Re-encrypt recovered PT | **EXACT MATCH — VERIFIED** |
+
+### Key Limitation Demonstrated
+Bandit/SAST-style tools detect API misuse. But the fundamental weakness here is **statistical** — the cipher preserves letter frequency, making it transparent to frequency analysis regardless of key size.
+
+---
+
 ## 📁 Project Structure
 
 ```
@@ -282,7 +354,17 @@ CryptoLabX_Group01/
 │
 ├── classical/                     # Future: Caesar, Vigenère ciphers
 ├── modern/                        # Future: AES, RSA
-├── attacks/                       # Future: Frequency analysis, Kasiski
+├── attacks/                       # Cryptanalysis implementations
+│   ├── shift_cipher_attack/       # Lab 4: Brute-force + Chi-Square on Caesar cipher
+│   │   ├── src/                   # shift_cipher.py, brute_force_dictionary.py, chi_square_attack.py, main.py
+│   │   ├── dictionary/            # english_words.txt
+│   │   ├── outputs/               # results.txt
+│   │   └── reports/
+│   └── monosubstitution_cipher_attack/  # Lab 5: Frequency + Pattern analysis attack
+│       ├── src/                   # monosubstitution_cipher.py, frequency_analysis.py, cryptanalysis.py, main.py
+│       ├── data/                  # plaintext_source.txt (Katz & Lindell page 31)
+│       ├── outputs/               # results.txt
+│       └── reports/               # Assignment_5_Report.md
 ├── analysis/                      # Future: Statistical tools
 ├── tests/                         # Future: Unit tests
 ├── docs/                          # Future: Lab reports & documentation
@@ -330,6 +412,8 @@ python main.py
 | Lab 1 | Project init, datasets, CLI menu, file analysis, logger | ✅ Done |
 | Lab 2 | SAST with Bandit — insecure program, scan, analysis report, installation record | ✅ Done |
 | Lab 3 | ATM System — modular Python app, 3 deliberate vulns, Bandit scan, SAST report | ✅ Done |
+| Lab 4 | Shift Cipher Cryptanalysis — brute-force + dictionary scoring + Chi-Square analysis | ✅ Done |
+| Lab 5 | Monoalphabetic Substitution — frequency analysis, word/pattern analysis, iterative key recovery | ✅ Done |
 
 ---
 
