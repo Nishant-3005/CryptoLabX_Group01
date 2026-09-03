@@ -1,0 +1,27 @@
+Introduction to Modern Cryptography
+Katz & Lindell — Chapter 1, Section 1.3 (Reference: Page 31 area)
+Group 01 Source Text for Lab 5 Monoalphabetic Substitution Cipher Analysis
+
+THE SHIFT CIPHER AND HISTORICAL BACKGROUND
+
+Historical ciphers provide a useful starting point for understanding modern cryptography not because they are secure by any means but because they illustrate the general principles of encryption and the way in which security is defined and analyzed.
+
+One of the oldest known ciphers is the Caesar cipher which Julius Caesar reportedly used to encrypt his military communications. The cipher operates by shifting each letter of the plaintext by a fixed number of positions in the alphabet. For example with a shift of three the letter a becomes d the letter b becomes e and so on wrapping around so that x becomes a y becomes b and z becomes c.
+
+The monoalphabetic substitution cipher is a significant generalization of the Caesar cipher. Rather than simply shifting all letters by the same amount a substitution cipher replaces each letter with an arbitrary other letter according to a fixed permutation of the alphabet. The key for a substitution cipher is thus a permutation of the twenty six letters of the alphabet giving a key space of size twenty six factorial which is approximately four times ten to the twenty sixth power.
+
+Despite this astronomically large key space the substitution cipher is completely insecure against a ciphertext only attack. The reason is that natural language has a great deal of statistical structure that is preserved by a monoalphabetic substitution. In English the letter e is the most frequently occurring letter appearing in about thirteen percent of all text. The letter t is the second most frequent at about nine percent followed by a at eight percent. Since a monoalphabetic substitution simply relabels the letters these frequency statistics are entirely preserved in the ciphertext.
+
+An attacker who observes a sufficiently long ciphertext can simply rank the ciphertext letters by frequency and guess that the most frequent ciphertext letter corresponds to e the second most frequent corresponds to t and so on. This attack is known as frequency analysis and it was first described in detail by the ninth century Arab scholar al Kindi in his treatise on deciphering cryptographic messages.
+
+Even when frequency analysis alone does not immediately reveal the full key an attacker can use additional techniques. Short words provide clues because the most common single letter words in English are a and i and the most common two letter words include of to in is it be as at so we he by or on do if me my up an go no us am. Three letter words include the and for are but not you all can her was one our out day get has him his how its let man new now old see two way who did its let put say she too use dad mom did its men far few get got him his how. Digrams and trigrams the most common pairs and triples of letters in English also constrain the possibilities.
+
+The vulnerability of the substitution cipher demonstrates a fundamental lesson that would be repeatedly confirmed throughout the history of cryptography namely that security cannot be based on the secrecy of the algorithm alone. Even with a key space of twenty six factorial any cipher that preserves the statistical properties of the plaintext will be vulnerable. True security requires that the ciphertext be statistically indistinguishable from random noise to any adversary who does not know the key.
+
+This insight eventually led to the development of polyalphabetic ciphers such as the Vigenere cipher which attempts to flatten the frequency distribution by using multiple substitution alphabets. However even the Vigenere cipher was eventually broken through the Kasiski examination and the index of coincidence method developed by Charles Babbage and Friedrich Kasiski in the nineteenth century.
+
+The study of these classical ciphers and their cryptanalysis is valuable not merely for historical interest but because it introduces the core methodology of modern cryptographic analysis. We define a scheme we consider what information the adversary has access to we ask whether any efficient adversary can distinguish ciphertext from random noise and we seek to prove that no such adversary exists under well defined computational assumptions.
+
+Source: Based on content from Introduction to Modern Cryptography by Jonathan Katz and Yehuda Lindell, Chapter 1.
+Used for educational purposes in CryptoLabX Lab 5 — Monoalphabetic Substitution Cipher Analysis.
+Group 01 | Nishant (2024UCP1773) | Lokesh Saini (2024UCP1505) | 22CPP307 | MNIT Jaipur
