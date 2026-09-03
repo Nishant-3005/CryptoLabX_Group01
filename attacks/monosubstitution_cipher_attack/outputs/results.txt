@@ -1,0 +1,34 @@
+CryptoLabX Lab 5 -- Monoalphabetic Substitution Cipher Attack
+Run timestamp: 2026-09-03 12:02:40
+============================================================
+
+PLAINTEXT (first 300 chars):
+Perfectly-Secret Encryption
+Katz and Lindell — Introduction to Modern Cryptography
+Page 31 — Chapter 2: Perfectly-Secret Encryption
+
+THE DEFINITION
+
+We are now ready to define the notion of perfect secrecy.
+Intuitively we imagine an adversary who knows the probability distribution
+over M that is the
+
+ENCRYPTION KEY:
+  Plaintext : A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+  Ciphertext: T S U L O J V I C W P Z G K B R M A N E Y Q F X H D
+
+CIPHERTEXT (first 300 chars):
+ROAJOUEZH-NOUAOE OKUAHRECBK
+PTED TKL ZCKLOZZ — CKEABLYUECBK EB GBLOAK UAHREBVATRIH
+RTVO 31 — UITREOA 2: ROAJOUEZH-NOUAOE OKUAHRECBK
+
+EIO LOJCKCECBK
+
+FO TAO KBF AOTLH EB LOJCKO EIO KBECBK BJ ROAJOUE NOUAOUH.
+CKEYCECQOZH FO CGTVCKO TK TLQOANTAH FIB PKBFN EIO RABSTSCZCEH LCNEACSYECBK
+BQOA G EITE CN EIO
+
+FREQUENCY ORDER (CT): O E C T B K A N I Z U R L G H S Y J Q V F M X D P W
+ENGLISH REFERENCE:     ETAOINSHRDLCUMWFGYPBVKJXQZ
+
+Group 01 | Nishant (2024UCP1773) | Lokesh Saini (2024UCP1505)
