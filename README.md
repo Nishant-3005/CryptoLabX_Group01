@@ -414,7 +414,43 @@ python main.py
 | Lab 3 | ATM System — modular Python app, 3 deliberate vulns, Bandit scan, SAST report | ✅ Done |
 | Lab 4 | Shift Cipher Cryptanalysis — brute-force + dictionary scoring + Chi-Square analysis | ✅ Done |
 | Lab 5 | Monoalphabetic Substitution — frequency analysis, word/pattern analysis, iterative key recovery | ✅ Done |
+| Lab 6 | Vigenère Cipher Cryptanalysis — Kasiski Examination + IC Analysis + Chi-Squared key recovery | ✅ Done |
+
+---
+
+## ✅ Lab 6 — Cryptanalysis of Vigenère Cipher
+
+### Overview
+Lab 6 attacks the Vigenère cipher — a polyalphabetic substitution cipher with key space 26^m. Despite its vastly larger key space compared to the shift cipher, it remains breakable via two classical techniques:
+
+**Application:** Ciphertext 1 (Odd Group) — 395 letters  
+**Folder:** `attacks/vigenere_cipher_attack/`  
+**Run:** `py -3 attacks/vigenere_cipher_attack/src/main.py`
+
+### Method
+
+| Step | Technique | Purpose |
+|------|-----------|---------|
+| 1 | Kasiski Examination | Find repeated patterns → distances → factors → candidate key lengths |
+| 2 | Index of Coincidence | Confirm key length (correct m → groups with IC ≈ 0.0667) |
+| 3 | Chi-Squared Frequency Analysis | Recover each key letter independently |
+| 4 | Vigenère Decrypt | Apply recovered key to get plaintext |
+| 5 | Verification | Re-encrypt plaintext → must match original ciphertext |
+
+### Results
+
+| Item | Value |
+|------|-------|
+| Kasiski top candidates | [2, 7, **14**, 3, 6] |
+| IC at key length 14 | 0.0644 (≈ English 0.0667) |
+| **Recovered key** | **`AMBROISETHOMAS`** |
+| **Plaintext** | Aria from *Mignon* (Ambroise Thomas, 1866) |
+| **Verification** | ✅ PASS |
+
+### Key Takeaway
+Both Kasiski and IC must be used together. Kasiski alone was misled by factor 2 (most frequent). IC decisively identified key length 14 with IC = 0.0644. The key (`AMBROISETHOMAS`) was a human-meaningful name — demonstrating that word-based keys eliminate most of the theoretical 26^14 key space.
 
 ---
 
 *CryptoLabX — Group 01 | 22CPP307 Cryptography Laboratory | MNIT Jaipur*
+
