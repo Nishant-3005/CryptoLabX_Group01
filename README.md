@@ -1,7 +1,7 @@
 # 🔐 CryptoLabX — Cryptography Laboratory Toolkit
 
 > **Course:** Cryptography Laboratory (22CPP307)
-> **Group:** 01 | Labs 1–5 — Python Foundations · SAST · ATM System · Shift Cipher Attack · Monoalphabetic Substitution Attack
+> **Group:** 01 | Labs 1–6 — Python Foundations · SAST · ATM System · Shift Cipher Attack · Monoalphabetic Substitution Attack · Vigenère Cipher Cryptanalysis
 
 ---
 
