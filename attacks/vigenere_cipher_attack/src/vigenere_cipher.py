@@ -95,6 +95,62 @@ def verify(ciphertext: str, plaintext: str, key: str) -> bool:
     return ct_clean == re_enc
 
 
+def format_plaintext(text: str, group_size: int = 5, groups_per_line: int = 8) -> str:
+    """
+    Format a raw uppercase string into spaced groups for readability.
+
+    Mirrors the assignment's ciphertext format:
+        DAZFI SFSPA VQLSN PXYSZ WXALC DAFGQ UISMT PHZGA
+        MKTTF TCCFX
+
+    Args:
+        text           : Raw uppercase string (no spaces)
+        group_size     : Letters per group (default 5)
+        groups_per_line: Groups per line before wrapping (default 8)
+    Returns:
+        Formatted multi-line string
+    """
+    clean = clean_ciphertext(text)
+    groups = [clean[i:i + group_size] for i in range(0, len(clean), group_size)]
+    lines = []
+    for i in range(0, len(groups), groups_per_line):
+        lines.append(" ".join(groups[i:i + groups_per_line]))
+    return "\n".join(lines)
+
+
+def key_schedule_display(plaintext: str, key: str, limit: int = 40) -> str:
+    """
+    Show the key cycling over the plaintext for educational display.
+
+    Returns a formatted string like:
+        Plain:  A T T A C K A T D A W N
+        Key  :  L E M O N L E M O N L E
+        Cipher: L X F O P V E F R N H R
+
+    Args:
+        plaintext: Clean text
+        key      : Key string
+        limit    : Max characters to display
+    Returns:
+        Formatted 3-line string
+    """
+    pt  = clean_ciphertext(plaintext)[:limit]
+    key_clean = clean_ciphertext(key)
+    m   = len(key_clean)
+
+    ct = vigenere_encrypt(pt, key_clean)
+
+    p_line = " ".join(pt)
+    k_line = " ".join(key_clean[i % m] for i in range(len(pt)))
+    c_line = " ".join(ct)
+
+    return (
+        f"  Plain : {p_line}\n"
+        f"  Key   : {k_line}\n"
+        f"  Cipher: {c_line}"
+    )
+
+
 if __name__ == "__main__":
     msg = "THEQUICKBROWNFOXJUMPSOVERTHELAZYDOG"
     key = "LEMON"
@@ -106,3 +162,5 @@ if __name__ == "__main__":
     print(f"Encrypted : {ct}")
     print(f"Decrypted : {pt}")
     print(f"Verified  : {ok}")
+    print(f"\nFormatted ciphertext:\n{format_plaintext(ct)}")
+    print(f"\nKey schedule (first 20 chars):\n{key_schedule_display(msg, key, 20)}")

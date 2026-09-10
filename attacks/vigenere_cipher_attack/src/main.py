@@ -15,12 +15,14 @@ Full pipeline:
 
 import os
 import sys
+import datetime
 
 _SRC = os.path.dirname(os.path.abspath(__file__))
 if _SRC not in sys.path:
     sys.path.insert(0, _SRC)
 
-from vigenere_cipher    import clean_ciphertext, vigenere_decrypt, verify
+from vigenere_cipher    import (clean_ciphertext, vigenere_decrypt, verify,
+                                format_plaintext, key_schedule_display)
 from kasiski_analysis   import kasiski_analysis
 from frequency_analysis import ic_analysis, find_key, frequency_analysis
 
@@ -70,8 +72,13 @@ def run_decryption(ciphertext: str, key: str) -> str:
     print(f"{W}  DECRYPTION RESULT{X}")
     print(f"{C}{'='*60}{X}")
     print(f"  Key              : {G}{W}{key}{X}")
-    print(f"  Plaintext (first 80): {G}{pt[:80]}{X}")
-    print(f"  Full plaintext   :\n  {pt}")
+    print(f"  Key length       : {len(key)}")
+    print(f"  Plaintext length : {len(pt)} characters")
+    print(f"\n  {Y}Formatted plaintext:{X}")
+    for line in format_plaintext(pt).split('\n'):
+        print(f"    {line}")
+    print(f"\n  {Y}Key schedule (first 28 chars):{X}")
+    print(key_schedule_display(pt, key, 28))
     print(f"{C}{'='*60}{X}")
     return pt
 
@@ -86,18 +93,23 @@ def run_verification(ciphertext: str, plaintext: str, key: str) -> bool:
 def save_results(ciphertext: str, key: str, plaintext: str,
                  kasiski_results: list, key_length: int, verified: bool) -> None:
     os.makedirs(os.path.dirname(_OUTPUTS_PATH), exist_ok=True)
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     with open(_OUTPUTS_PATH, "w", encoding="utf-8") as f:
-        f.write("Vigenere Cipher Cryptanalysis — Results\n")
-        f.write("CryptoLabX Group 01 | Lab 6\n")
+        f.write("Vigenere Cipher Cryptanalysis -- Results\n")
+        f.write("CryptoLabX Group 01 | Lab 6 | 22CPP307\n")
+        f.write(f"Run timestamp: {timestamp}\n")
         f.write("=" * 60 + "\n\n")
         f.write(f"Ciphertext length : {len(ciphertext)}\n")
-        f.write(f"Ciphertext (clean): {ciphertext}\n\n")
+        f.write(f"Ciphertext (formatted):\n{format_plaintext(ciphertext)}\n\n")
         f.write(f"Kasiski top candidates: {kasiski_results[:5]}\n")
         f.write(f"Chosen key length : {key_length}\n")
         f.write(f"Recovered key     : {key}\n\n")
-        f.write(f"Decrypted plaintext:\n{plaintext}\n\n")
-        f.write(f"Verification      : {'PASS' if verified else 'FAIL'}\n")
-    print(f"  Results saved -> {_OUTPUTS_PATH}")
+        f.write(f"Key schedule (first 28 chars):\n{key_schedule_display(plaintext, key, 28)}\n\n")
+        f.write(f"Decrypted plaintext (formatted):\n{format_plaintext(plaintext)}\n\n")
+        f.write(f"Decrypted plaintext (raw):\n{plaintext}\n\n")
+        f.write(f"Verification      : {'PASS' if verified else 'FAIL'}\n\n")
+        f.write("Group 01 | Nishant (2024UCP1773) | Lokesh Saini (2024UCP1505)\n")
+    print(f"  {G}Results saved -> {os.path.relpath(_OUTPUTS_PATH)}{X}")
 
 
 def main() -> None:
