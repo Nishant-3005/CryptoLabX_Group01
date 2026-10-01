@@ -1,7 +1,7 @@
 # 🔐 CryptoLabX — Cryptography Laboratory Toolkit
 
 > **Course:** Cryptography Laboratory (22CPP307)
-> **Group:** 01 | Labs 1–6 — Python Foundations · SAST · ATM System · Shift Cipher Attack · Monoalphabetic Substitution Attack · Vigenère Cipher Cryptanalysis
+> **Group:** 01 | Labs 1–7 — Python Foundations · SAST · ATM System · Shift Cipher Attack · Monoalphabetic Substitution Attack · Vigenère Cipher Cryptanalysis · Padding Oracle Attack
 
 ---
 
@@ -415,6 +415,7 @@ python main.py
 | Lab 4 | Shift Cipher Cryptanalysis — brute-force + dictionary scoring + Chi-Square analysis | ✅ Done |
 | Lab 5 | Monoalphabetic Substitution — frequency analysis, word/pattern analysis, iterative key recovery | ✅ Done |
 | Lab 6 | Vigenère Cipher Cryptanalysis — Kasiski Examination + IC Analysis + Chi-Squared key recovery | ✅ Done |
+| Lab 7 | Padding Oracle Attack — AES-CBC byte-by-byte plaintext recovery via padding oracle | ✅ Done |
 
 ---
 
@@ -449,6 +450,37 @@ Lab 6 attacks the Vigenère cipher — a polyalphabetic substitution cipher with
 
 ### Key Takeaway
 Both Kasiski and IC must be used together. Kasiski alone was misled by factor 2 (most frequent). IC decisively identified key length 14 with IC = 0.0644. The key (`AMBROISETHOMAS`) was a human-meaningful name — demonstrating that word-based keys eliminate most of the theoretical 26^14 key space.
+
+---
+
+## ✅ Lab 7 — Padding Oracle Attack on AES-CBC
+
+### Overview
+Lab 7 demonstrates one of the most powerful real-world cryptographic attacks: the **Padding Oracle Attack**. An AES-CBC ciphertext is broken completely — recovering the full plaintext byte-by-byte — without ever accessing the encryption key. The only information the attacker uses is whether each forged ciphertext produces **valid PKCS#7 padding** after decryption. This single-bit oracle is sufficient to break AES-128-CBC entirely.
+
+**Application:** 124-byte plaintext, 8 AES-128-CBC blocks  
+**Folder:** `attacks/padding_oracle_attack/`  
+**Run:** `python attacks/padding_oracle_attack/src/main.py`
+
+### Method
+
+| Step | Action | Detail |
+|------|--------|--------|
+| 1 | Encrypt plaintext | AES-128-CBC with random key + IV (key never shared) |
+| 2 | Create oracle | `PaddingOracle.query(iv, ct)` → True/False only |
+| 3 | Attack | Modify previous block byte-by-byte; brute-force 256 values; oracle reveals padding validity → intermediate decrypt byte → XOR with original → plaintext byte |
+| 4 | Verify | Compare recovered plaintext to original — must match exactly |
+
+### Results
+
+| Metric | Value |
+|--------|-------|
+| Total oracle queries | ~15,912 |
+| Plaintext recovered | ✅ PASS — exact match |
+| Key accessed by attacker | ❌ Never |
+
+### Key Takeaway
+A single-bit information leak — valid or invalid PKCS#7 padding — is enough to completely break AES-CBC encryption. This is why modern protocols use **authenticated encryption**: AES-GCM or Encrypt-then-MAC rejects tampered ciphertexts before decryption, eliminating the oracle entirely.
 
 ---
 
