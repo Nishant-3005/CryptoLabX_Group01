@@ -1,0 +1,28 @@
+Padding Oracle Attack -- Results
+CryptoLabX Group 01 | Lab 7 | 22CPP307
+Run timestamp: 2026-10-01 11:49:32
+============================================================
+
+Original plaintext  : The Padding Oracle Attack demonstrates that even strong ciphers like AES can be broken if the system leaks padding validity.
+Plaintext length    : 124 bytes
+Ciphertext blocks   : 8
+
+Recovered plaintext : The Padding Oracle Attack demonstrates that even strong ciphers like AES can be broken if the system leaks padding validity.
+Match               : PASS
+
+Total oracle queries: 15912
+Queries per block   : ~1989
+Theoretical max     : 32768
+
+Attack Explanation:
+  In CBC decryption, P_i = AES_inv(C_i) XOR C_{i-1}.
+  By modifying C_{i-1} and checking if the oracle accepts
+  the padding, we can deduce the intermediate value I_i
+  byte-by-byte, then XOR with the real C_{i-1} to get P_i.
+
+Prevention:
+  1. Use authenticated encryption (AES-GCM) instead of AES-CBC
+  2. Apply Encrypt-then-MAC (HMAC verified before decryption)
+  3. Return generic errors -- never reveal padding validity
+
+Group 01 | Nishant (2024UCP1773) | Lokesh Saini (2024UCP1505)
