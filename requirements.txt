@@ -1,7 +1,10 @@
-# CryptoLabX — Python dependencies
+# CryptoLabX -- Python dependencies
 # Week 1: No external dependencies required for core toolkit.
 # Future labs may add the packages listed below as needed.
 
 # --- Week 1 (current) ---
 # No third-party packages needed; uses only Python standard library:
 #   os, glob, collections, datetime, string
+
+# --- Lab 7: Padding Oracle Attack on AES-CBC ---
+pycryptodome>=3.20
