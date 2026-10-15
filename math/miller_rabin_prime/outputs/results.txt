@@ -1,0 +1,62 @@
+Cryptography Laboratory (22CPP307) -- Lab 8
+Task: Cryptographic Prime Generation Using Miller-Rabin
+Group 01: Nishant (2024UCP1773) | Lokesh Saini (2024UCP1505)
+Timestamp: 2026-10-15 12:02:33
+================================================================================
+
+1. SUBMISSION EXPERIMENTAL RESULTS TABLE
+--------------------------------------------------------------------------------
++----------------------------------------+--------------------------------------------+
+| Parameter                              | Value                                      |
++----------------------------------------+--------------------------------------------+
+| Assigned bit length                    | 512 bits                                   |
+| Generated prime candidate (Dec)        | 117824505369052352187131196285388492944620 |
+|                                        | 524588070574130777463705462138292385121712 |
+|                                        | 629332914149956958301354852554051622306161 |
+|                                        | 38927192051672382486731359221              |
+| Generated prime candidate (Hex)        | 0xe0f76b265cf06d40ecfcaa588f829d58ceeba43c |
+|                                        | 1861c9dda88027296a2899ee4ea8c38ea191d17dd7 |
+|                                        | 2da8bb6f349f2184f4926f8e447bea5eb3b7158abd |
+|                                        | 03f5                                       |
+| Actual bit length of candidate         | 512 bits                                   |
+| Number of candidates tested            | 651                                        |
+| Number of Miller-Rabin rounds          | 40 rounds                                  |
+| Theoretical error bound                | <= 4^-40 (~8.27 x 10^-25)                  |
+| Total execution time                   | 0.1270 seconds                             |
+| Verification: Bit Length Check         | PASS                                       |
+| Verification: MR 12 Fixed Bases        | PASS                                       |
+| Verification: Trial Division (50k)     | PASS                                       |
+| Verification: SymPy isprime()          | PASS                                       |
+| Overall Primality Status               | CONFIRMED PRIME                            |
++----------------------------------------+--------------------------------------------+
+
+2. PRIME DETAILS
+--------------------------------------------------------------------------------
+Prime (Decimal):
+11782450536905235218713119628538849294462052458807057413077746370546213829238512171262933291414995695830135485255405162230616138927192051672382486731359221
+
+Prime (Hexadecimal):
+0xe0f76b265cf06d40ecfcaa588f829d58ceeba43c1861c9dda88027296a2899ee4ea8c38ea191d17dd72da8bb6f349f2184f4926f8e447bea5eb3b7158abd03f5
+
+Prime (Bits): 512 bits
+
+3. VERIFICATION SUMMARY
+--------------------------------------------------------------------------------
+[*] Assigned Bit Length Check (512 bits) : PASS
+[*] Miller-Rabin (12 fixed bases)                 : PASS
+[*] Extended Trial Division (up to 50,000)        : PASS
+[*] SymPy Independent isprime()                   : PASS
+[*] Overall Primality Decision                    : CONFIRMED PRIME
+
+4. STATISTICAL BENCHMARK (5 Runs)
+--------------------------------------------------------------------------------
+Run    Candidates     Time (s)     Bit Length   Status    
+------------------------------------------------------
+1      651            0.1270       512          PASS      
+2      269            0.0737       512          PASS      
+3      168            0.0528       512          PASS      
+4      4              0.0289       512          PASS      
+5      516            0.1089       512          PASS      
+------------------------------------------------------
+Average candidates tested: 321.6
+Average generation time  : 0.0783 seconds
