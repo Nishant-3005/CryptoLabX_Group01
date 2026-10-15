@@ -1,7 +1,7 @@
 # 🔐 CryptoLabX — Cryptography Laboratory Toolkit
 
 > **Course:** Cryptography Laboratory (22CPP307)
-> **Group:** 01 | Labs 1–7 — Python Foundations · SAST · ATM System · Shift Cipher Attack · Monoalphabetic Substitution Attack · Vigenère Cipher Cryptanalysis · Padding Oracle Attack
+> **Group:** 01 | Labs 1–8 — Python Foundations · SAST · ATM System · Shift Cipher Attack · Monoalphabetic Substitution Attack · Vigenère Cipher Cryptanalysis · Padding Oracle Attack · Miller-Rabin Prime Generation
 
 ---
 
@@ -416,6 +416,7 @@ python main.py
 | Lab 5 | Monoalphabetic Substitution — frequency analysis, word/pattern analysis, iterative key recovery | ✅ Done |
 | Lab 6 | Vigenère Cipher Cryptanalysis — Kasiski Examination + IC Analysis + Chi-Squared key recovery | ✅ Done |
 | Lab 7 | Padding Oracle Attack — AES-CBC byte-by-byte plaintext recovery via padding oracle | ✅ Done |
+| Lab 8 | Miller-Rabin Primality Test — 512-bit cryptographic prime generation, small-prime pre-filter, 40-round MR, multi-point verification | ✅ Done |
 
 ---
 
@@ -484,5 +485,42 @@ A single-bit information leak — valid or invalid PKCS#7 padding — is enough 
 
 ---
 
+## ✅ Lab 8 — Cryptographic Prime Generation Using Miller-Rabin (512-bit)
+
+### Overview
+Lab 8 implements the generation and multi-faceted verification of cryptographically secure prime numbers — the fundamental building blocks of asymmetric public-key cryptosystems including RSA, Diffie-Hellman Key Exchange (DHKE), and DSA. The implementation generates an exact **512-bit probable prime** using the **Miller-Rabin probabilistic primality test** coupled with small-prime pre-filtering.
+
+**Application:** 512-bit Cryptographic Prime Generation & Multi-Point Verification  
+**Folder:** `math/miller_rabin_prime/`  
+**Run:** `python math/miller_rabin_prime/src/main.py`
+
+### Method
+
+| Step | Action | Detail |
+|------|--------|--------|
+| 1 | Candidate Generation | Generate random 512-bit integers with MSB=1 (exact length) and LSB=1 (odd) |
+| 2 | Small Prime Pre-filter | Quick trial division with primes $\le 997$, eliminating ~80% of composites cheaply |
+| 3 | Miller-Rabin Test | Decompose $n-1 = 2^s \cdot d$; evaluate $k=40$ rounds of random base tests |
+| 4 | Multi-point Verification | Check exact 512-bit length, 12 fixed deterministic prime bases, trial division (50k), and SymPy `isprime()` |
+
+### Submission Experimental Results
+
+| Parameter | Value |
+|-----------|-------|
+| **Assigned bit length** | **512 bits** |
+| **Generated prime candidate (Hex)** | `0xe0f76b265cf06d40ecfcaa588f829d58ceeba43c1861c9dda88027296a2899ee4ea8c38ea191d17dd72da8bb6f349f2184f4926f8e447bea5eb3b7158abd03f5` |
+| **Actual bit length of candidate** | **512 bits** |
+| **Number of candidates tested** | **651** |
+| **Number of Miller-Rabin rounds** | **40 rounds** |
+| **Theoretical error bound** | $\le 4^{-40} \approx 8.27 \times 10^{-25}$ |
+| **Total execution time** | **0.1270 seconds** (Benchmark avg: 0.0783 s) |
+| **Independent Verification** | **ALL PASSED** (Bit length, 12 Bases, 50k Trial Div, SymPy) |
+
+### Key Takeaway
+Fermat's primality test is unsafe for cryptographic key generation due to Carmichael numbers ($561, 1105, 1729, \dots$). The Miller-Rabin test completely resolves this by detecting non-trivial square roots of $1 \pmod n$. With 40 independent rounds, the probability of false primality is bounded below $10^{-24}$ — an astronomical safety margin exceeding hardware reliability thresholds.
+
+---
+
 *CryptoLabX — Group 01 | 22CPP307 Cryptography Laboratory | MNIT Jaipur*
+
 
