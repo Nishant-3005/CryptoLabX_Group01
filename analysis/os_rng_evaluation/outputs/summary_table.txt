@@ -1,0 +1,24 @@
+Cryptography Laboratory (22CPP307) -- Lab 9
+Evaluation of OS Random Number Generation Mechanisms
+Group 01: Nishant (2024UCP1773) | Lokesh Saini (2024UCP1505)
+Execution Timestamp: 2026-10-29 12:19:42
+======================================================================================
+
+|---------------------------|---------------|---------------|---------------|---------------|---------------|---------------|---------------|
+| Generator / Engine        | 1s Proportion | Chi-Square    | Chi2 p-val    | Entropy       | Autocorr (r1) | Monte Carlo Pi | Status        |
+|---------------------------|---------------|---------------|---------------|---------------|---------------|---------------|---------------|
+| Linux /dev/urandom        | 0.500069      | 222.06        | 0.9328        | 7.999847      | -0.000368     | 3.13803       | PASS          |
+| OpenSSL rand              | 0.499680      | 253.43        | 0.5161        | 7.999826      | +0.000159     | 3.13837       | PASS          |
+| Windows CNG               | 0.500038      | 266.36        | 0.2997        | 7.999817      | -0.000360     | 3.14005       | PASS          |
+| Python PRNG (MT19937)     | 0.500137      | 267.79        | 0.2787        | 7.999816      | -0.001404     | 3.14320       | PASS          |
+|---------------------------|---------------|---------------|---------------|---------------|---------------|---------------|---------------|
+
+KEY FINDINGS & CRYPTOGRAPHIC INTERPRETATION:
+--------------------------------------------------------------------------------------
+1. All four generators passed every standard statistical randomness test.
+2. Shannon entropy for all sources exceeded 7.9998 bits/byte (ideal = 8.000000).
+3. Serial correlation for all lags strictly adhered to theoretical white noise bounds.
+4. CRITICAL FINDING: Python PRNG (Mersenne Twister MT19937) achieved perfect statistical
+   scores indistinguishable from OS CSPRNGs, yet possesses ZERO cryptographic security.
+   Observing 624 outputs fully reveals its internal state and predicts all future outputs.
+   Passing statistical tests is a necessary condition, NOT a sufficient condition.
