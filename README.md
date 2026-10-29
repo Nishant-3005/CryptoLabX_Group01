@@ -1,7 +1,7 @@
 # 🔐 CryptoLabX — Cryptography Laboratory Toolkit
 
 > **Course:** Cryptography Laboratory (22CPP307)
-> **Group:** 01 | Labs 1–8 — Python Foundations · SAST · ATM System · Shift Cipher Attack · Monoalphabetic Substitution Attack · Vigenère Cipher Cryptanalysis · Padding Oracle Attack · Miller-Rabin Prime Generation
+> **Group:** 01 | Labs 1–9 — Python Foundations · SAST · ATM System · Shift Cipher Attack · Monoalphabetic Substitution Attack · Vigenère Cipher Cryptanalysis · Padding Oracle Attack · Miller-Rabin Prime Generation · OS Random Number Generation Evaluation
 
 ---
 
@@ -417,6 +417,7 @@ python main.py
 | Lab 6 | Vigenère Cipher Cryptanalysis — Kasiski Examination + IC Analysis + Chi-Squared key recovery | ✅ Done |
 | Lab 7 | Padding Oracle Attack — AES-CBC byte-by-byte plaintext recovery via padding oracle | ✅ Done |
 | Lab 8 | Miller-Rabin Primality Test — 512-bit cryptographic prime generation, small-prime pre-filter, 40-round MR, multi-point verification | ✅ Done |
+| Lab 9 | OS Random Number Generation — 1MB samples, NIST tests, entropy analysis, OS CSPRNG comparison, predictability study | ✅ Done |
 
 ---
 
@@ -518,6 +519,41 @@ Lab 8 implements the generation and multi-faceted verification of cryptographica
 
 ### Key Takeaway
 Fermat's primality test is unsafe for cryptographic key generation due to Carmichael numbers ($561, 1105, 1729, \dots$). The Miller-Rabin test completely resolves this by detecting non-trivial square roots of $1 \pmod n$. With 40 independent rounds, the probability of false primality is bounded below $10^{-24}$ — an astronomical safety margin exceeding hardware reliability thresholds.
+
+---
+
+## ✅ Lab 9 — Evaluation of OS Random-Number Generation Mechanisms
+
+### Overview
+Lab 9 evaluates operating-system random-number generation mechanisms and investigates their suitability for cryptographic applications. The experiment generated 1 MB ($1,048,576$ bytes) datasets from Linux `/dev/urandom`, OpenSSL `rand`, Windows CNG (`BCryptGenRandom`), and a non-cryptographic control group (Python's Mersenne Twister MT19937).
+
+**Application:** 1 MB Dataset Generation, NIST Randomness Tests, Jupyter Analysis & Architectural Deep-Dive  
+**Folder:** `analysis/os_rng_evaluation/`  
+**Run:** `python analysis/os_rng_evaluation/src/main.py`  
+**Notebook:** `analysis/os_rng_evaluation/notebooks/rng_statistical_analysis.ipynb`
+
+### Method
+
+| Step | Action | Detail |
+|------|--------|--------|
+| 1 | 1 MB Data Collection | Capture $1,048,576$ raw bytes from Linux `/dev/urandom`, OpenSSL, Windows CNG, and Python PRNG |
+| 2 | Statistical Testing | Execute Monobit, $\chi^2$ (256 bins), Runs, Serial Autocorrelation (lags 1..20), Shannon Entropy, and Monte Carlo $\pi$ |
+| 3 | Architectural Study | Deep-dive into Linux kernel BLAKE2s + ChaCha20 DRBG vs Windows CNG NIST SP 800-90A AES-256 CTR-DRBG |
+| 4 | Predictability Analysis | Mathematically prove why passing statistical tests does NOT guarantee cryptographic security |
+
+### Empirical Results Summary Table
+
+| Generator / Engine | 1s Proportion | Chi-Square ($\chi^2$) | $\chi^2$ $p$-value | Shannon Entropy | Autocorrelation ($r_1$) | Monte Carlo $\pi$ | Status |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Linux `/dev/urandom`** | 0.500069 | 222.06 | 0.9328 | 7.999847 | -0.000368 | 3.13803 | **PASS** |
+| **OpenSSL `rand`** | 0.499680 | 253.43 | 0.5161 | 7.999826 | +0.000159 | 3.13837 | **PASS** |
+| **Windows CNG** | 0.500038 | 266.36 | 0.2997 | 7.999817 | -0.000360 | 3.14005 | **PASS** |
+| **Python PRNG (MT19937)**| 0.500137 | 267.79 | 0.2787 | 7.999816 | -0.001404 | 3.14320 | **PASS (Statistical)** |
+
+### Key Takeaway: Statistical Randomness ≠ Cryptographic Security
+Passing statistical tests is a **necessary condition, but NEVER a sufficient condition** for cryptographic security. 
+- Python's `random` module (Mersenne Twister) passed every statistical test with high entropy ($7.999816$) and uniform byte distribution ($\chi^2 = 267.79, p = 0.2787$), yet it has **zero cryptographic security**. Observing just 624 outputs completely reveals its 19,937-bit state, enabling 100% prediction of all past and future values.
+- True cryptographic security requires **computational unpredictability** (Next-Bit Unpredictability) and **Forward/Backward Secrecy**, provided exclusively by OS-level CSPRNGs like Linux `/dev/urandom` and Windows CNG.
 
 ---
 
