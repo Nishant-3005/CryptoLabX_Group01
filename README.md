@@ -1,7 +1,7 @@
 # 🔐 CryptoLabX — Cryptography Laboratory Toolkit
 
 > **Course:** Cryptography Laboratory (22CPP307)
-> **Group:** 01 | Labs 1–9 — Python Foundations · SAST · ATM System · Shift Cipher Attack · Monoalphabetic Substitution Attack · Vigenère Cipher Cryptanalysis · Padding Oracle Attack · Miller-Rabin Prime Generation · OS Random Number Generation Evaluation
+> **Group:** 01 | Labs 1–10 — Python Foundations · SAST · ATM System · Shift Cipher Attack · Monoalphabetic Substitution Attack · Vigenère Cipher Cryptanalysis · Padding Oracle Attack · Miller-Rabin Prime Generation · OS RNG Evaluation · MT19937 Cryptanalysis
 
 ---
 
@@ -418,6 +418,7 @@ python main.py
 | Lab 7 | Padding Oracle Attack — AES-CBC byte-by-byte plaintext recovery via padding oracle | ✅ Done |
 | Lab 8 | Miller-Rabin Primality Test — 512-bit cryptographic prime generation, small-prime pre-filter, 40-round MR, multi-point verification | ✅ Done |
 | Lab 9 | OS Random Number Generation — 1MB samples, NIST tests, entropy analysis, OS CSPRNG comparison, predictability study | ✅ Done |
+| Lab 10 | MT19937 Cryptanalysis — 16-bit seed stream cipher brute force, timestamp-seeded reset token prediction | ✅ Done |
 
 ---
 
@@ -554,6 +555,37 @@ Lab 9 evaluates operating-system random-number generation mechanisms and investi
 Passing statistical tests is a **necessary condition, but NEVER a sufficient condition** for cryptographic security. 
 - Python's `random` module (Mersenne Twister) passed every statistical test with high entropy ($7.999816$) and uniform byte distribution ($\chi^2 = 267.79, p = 0.2787$), yet it has **zero cryptographic security**. Observing just 624 outputs completely reveals its 19,937-bit state, enabling 100% prediction of all past and future values.
 - True cryptographic security requires **computational unpredictability** (Next-Bit Unpredictability) and **Forward/Backward Secrecy**, provided exclusively by OS-level CSPRNGs like Linux `/dev/urandom` and Windows CNG.
+
+## ✅ Lab 10 — MT19937 Stream Cipher Known-Plaintext & Predictable Token Attacks
+
+### Overview
+Lab 10 demonstrates active cryptanalytic attacks exploiting systems that misuse the **Mersenne Twister (MT19937)** PRNG. While MT19937 displays strong statistical randomness (Lab 9), it fails catastrophically under cryptographic scrutiny due to linear state transitions and low-entropy seeding.
+
+**Application:** 16-Bit Seed Known-Plaintext Recovery & Timestamp-Seeded Token Prediction  
+**Folder:** `attacks/mt19937_stream_cipher_attack/`  
+**Run:** `python attacks/mt19937_stream_cipher_attack/src/main.py`  
+**Notebook:** `attacks/mt19937_stream_cipher_attack/notebooks/mt19937_cryptanalysis.ipynb`
+
+### Method
+
+| Step | Action | Detail |
+|------|--------|--------|
+| 1 | Part A: Cipher Setup | Symmetric stream cipher: $C_i = P_i \oplus K_i$, $K_i = \text{MT19937}(S) \pmod{256}$, 16-bit seed ($S \in [0, 65535]$) |
+| 2 | Part A: Seed Recovery | Brute-force 65,536 seeds using sliding-window search for 14 known consecutive 'A's at unknown offset |
+| 3 | Part B: Token Generator | Simulate web reset tokens: 16 bytes generated from MT19937 seeded by Unix timestamp $T$ |
+| 4 | Part B: Token Cracker | Search candidate timestamps in $[T_0 - 300, T_0 + 300]$ (601 candidates) to recover issuance time and token |
+
+### Empirical Results Summary Table
+
+| Attack Vector | Search Space | Search Time | Search Throughput | Verification Result |
+| :--- | :---: | :---: | :---: | :---: |
+| **Part A: 16-bit Seed Stream Cipher** | 65,536 seeds | **0.368 seconds** | **88,783 seeds/sec** | **PASS (Exact Match)** |
+| **Part B: Timestamp Reset Token** | 601 timestamps | **2.92 milliseconds** | **111,492 tokens/sec** | **PASS (Exact Match)** |
+
+### Key Takeaway
+Mersenne Twister (MT19937) must **never** be used in security-critical contexts. Restricting keys to 16 bits allows exhaustive search in $<0.5$ seconds, while timestamp seeding reduces token entropy from 128 bits to $\approx 9.2$ bits. Always use OS-level CSPRNGs (`secrets` in Python).
+
+---
 
 ---
 
