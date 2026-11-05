@@ -1,0 +1,50 @@
+Cryptography Laboratory (22CPP307) -- Lab 10
+Task: MT19937 Stream Cipher Known-Plaintext & Predictable Token Attacks
+Group 01: Nishant (2024UCP1773) | Lokesh Saini (2024UCP1505)
+Execution Timestamp: 2026-11-05 06:25:16 UTC
+====================================================================================
+
+1. PART A: MT19937 STREAM CIPHER 16-BIT SEED RECOVERY RESULTS
+------------------------------------------------------------------------------------
+Target Plaintext          : Y,qf1uAAAAAAAAAAAAAA
+Prefix String             : 'Y,qf1u' (6 characters)
+Known Plaintext Sequence  : 'AAAAAAAAAAAAAA' (14 x 'A')
+Known Sequence Offset     : Byte 6
+True Encryption Seed      : 32684 (0x7FAC)
+Recovered Encryption Seed : 32684 (0x7FAC)
+Seed Match Result         : EXACT MATCH
+Ciphertext (Hex)          : 012a38f4600a40bf7c2742fb72e039fc86d7f437
+Recovered Plaintext       : Y,qf1uAAAAAAAAAAAAAA
+Candidate Seeds Tested    : 32,685 / 65,536 (49.87% of space)
+Brute-Force Execution Time: 0.3681 seconds
+Search Throughput Rate    : 88,783 seeds/second
+Verification Check        : PASS
+
+2. PART B: PREDICTABLE PASSWORD RESET TOKEN ATTACK RESULTS
+------------------------------------------------------------------------------------
+Client Request Timestamp  : 1793859916 (Unix epoch)
+True Server Issuance Time : 1793859940 (Unix epoch)
+Intercepted Target Token  : 70ab0161edd83c126fdd693d33600e83
+Search Window Radius      : +/- 300 seconds
+Search Window Range       : [1793859616, 1793860216]
+Total Candidate Timestamps: 601
+Recovered Issuance Time   : 1793859940 (0x6AEC2164)
+Timestamp Match Result    : EXACT MATCH
+Reconstructed Token Check : 70ab0161edd83c126fdd693d33600e83
+Candidates Tested         : 325 / 601
+Search Execution Time     : 2.915 ms
+Verification Check        : PASS
+
+3. SUMMARY & COMPARATIVE SECURITY TABLE
+------------------------------------------------------------------------------------
+Attack Vector                    | Search Space     | Search Time    | Complexity   | Result
+------------------------------------------------------------------------------------
+Part A: 16-bit Seed Stream Cipher | 65,536 seeds     | 0.368 s        | O(2^16)      | BROKEN [PASS]
+Part B: Timestamp Reset Token    | 601 timestamps   | 2.92 ms        | O(Delta T)   | BROKEN [PASS]
+------------------------------------------------------------------------------------
+
+4. CRYPTOGRAPHIC LESSONS & DEFENSES
+------------------------------------------------------------------------------------
+1. MT19937 has ZERO cryptographic security: small seed spaces (16-bit) are trivial to invert via brute force.
+2. Time-seeded PRNGs (random.seed(int(time.time()))) reduce token entropy from 128 bits to ~9 bits (600 candidates).
+3. Remedy: Use OS-level CSPRNGs (secrets.token_hex(32) or os.urandom(32)) providing 256 bits of true entropy.
