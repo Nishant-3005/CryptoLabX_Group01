@@ -144,3 +144,4 @@ if __name__ == "__main__":
     print(f"    Search Throughput     : {attack_result['seeds_per_second']:,.0f} seeds/second")
     print(f"    Solution Verification : [{'PASS' if attack_result['verified'] else 'FAIL'}]")
     print("=" * 72)
+

@@ -121,3 +121,4 @@ if __name__ == "__main__":
     print(f"    Ciphertext Length : {len(ciphertext)} bytes")
     print(f"    Ciphertext (Hex)  : {ciphertext.hex()}")
     print("=" * 72)
+
